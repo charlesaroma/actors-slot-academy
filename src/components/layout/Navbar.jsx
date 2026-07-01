@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link, NavLink, useLocation } from "react-router-dom"
 import { motion, AnimatePresence } from "motion/react"
 import { Menu, X, ChevronDown } from "lucide-react"
@@ -8,7 +8,14 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState(null)
   const [mobileExpanded, setMobileExpanded] = useState(null)
+  const [scrolled, setScrolled] = useState(false)
   const { pathname } = useLocation()
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   const closeMobile = () => {
     setMobileOpen(false)
@@ -16,18 +23,28 @@ export default function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-asa-black/5 bg-asa-background/95 backdrop-blur supports-[backdrop-filter]:bg-asa-background/80">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-2" onClick={closeMobile}>
-          <span className="text-xl font-bold font-headline tracking-tight text-asa-black">
-            ASA
-          </span>
-          <span className="hidden text-xs text-asa-grey sm:inline">
-            Actor&apos;s Slot Academy
-          </span>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-asa-background/90 backdrop-blur-md border-b border-asa-border shadow-lg shadow-black/20"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-3 group" onClick={closeMobile}>
+          <div className="flex flex-col leading-none">
+            <span className="font-headline text-xl font-bold tracking-tight text-asa-primary group-hover:text-asa-primary-bright transition-colors duration-200">
+              ASA
+            </span>
+            <span className="label-mono text-[9px] text-asa-muted tracking-[0.2em]">
+              Actor&apos;s Slot Academy
+            </span>
+          </div>
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex">
+        {/* Desktop Nav */}
+        <nav className="hidden items-center gap-8 md:flex">
           {NAV_LINKS.map((item) =>
             item.path ? (
               <NavLink
@@ -35,14 +52,23 @@ export default function Navbar() {
                 to={item.path}
                 end={item.path === "/"}
                 className={({ isActive }) =>
-                  `text-sm font-medium tracking-wide transition-colors duration-200 ${
+                  `text-sm font-medium tracking-wide transition-colors duration-200 relative group ${
                     isActive
-                      ? "text-asa-secondary"
-                      : "text-asa-black hover:text-asa-secondary"
+                      ? "text-asa-primary"
+                      : "text-asa-muted hover:text-asa-text"
                   }`
                 }
               >
-                {item.name}
+                {({ isActive }) => (
+                  <>
+                    {item.name}
+                    <span
+                      className={`absolute -bottom-1 left-0 h-px bg-asa-primary transition-all duration-300 ${
+                        isActive ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
+                    />
+                  </>
+                )}
               </NavLink>
             ) : (
               <div
@@ -51,7 +77,7 @@ export default function Navbar() {
                 onMouseEnter={() => setOpenDropdown(item.name)}
                 onMouseLeave={() => setOpenDropdown(null)}
               >
-                <button className="flex items-center gap-1 text-sm font-medium tracking-wide text-asa-black transition-colors duration-200 hover:text-asa-secondary">
+                <button className="flex items-center gap-1 text-sm font-medium tracking-wide text-asa-muted transition-colors duration-200 hover:text-asa-text cursor-pointer">
                   {item.name}
                   <ChevronDown
                     className={`h-3.5 w-3.5 transition-transform duration-200 ${
@@ -62,20 +88,21 @@ export default function Navbar() {
                 <AnimatePresence>
                   {openDropdown === item.name && (
                     <motion.div
-                      initial={{ opacity: 0, y: -4 }}
+                      initial={{ opacity: 0, y: -8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -4 }}
-                      className="absolute left-0 top-full mt-1 w-52 rounded-lg border border-asa-black/5 bg-asa-background p-1 shadow-lg"
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute left-0 top-full mt-2 w-52 rounded-xl border border-asa-border bg-asa-surface/95 backdrop-blur-md p-1.5 shadow-xl shadow-black/40"
                     >
                       {item.dropdown.map((sub) => (
                         <NavLink
                           key={sub.path}
                           to={sub.path}
                           className={({ isActive }) =>
-                            `block rounded-md px-3 py-2 text-sm transition-colors ${
+                            `block rounded-lg px-3 py-2 text-sm transition-colors duration-150 cursor-pointer ${
                               isActive
-                                ? "bg-asa-secondary/10 text-asa-secondary"
-                                : "text-asa-black hover:bg-asa-black/5"
+                                ? "bg-asa-primary/10 text-asa-primary"
+                                : "text-asa-muted hover:bg-asa-border hover:text-asa-text"
                             }`
                           }
                         >
@@ -90,15 +117,17 @@ export default function Navbar() {
           )}
         </nav>
 
+        {/* CTA */}
         <Link
           to="/auth/login"
-          className="hidden rounded-md bg-asa-secondary px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-asa-secondary/90 md:inline-block"
+          className="hidden rounded-lg bg-asa-primary px-5 py-2 text-sm font-semibold text-asa-background transition-all duration-200 hover:bg-asa-primary-bright hover:shadow-[0_0_20px_rgba(201,154,62,0.35)] md:inline-block"
         >
           Sign In
         </Link>
 
+        {/* Mobile toggle */}
         <button
-          className="md:hidden"
+          className="md:hidden text-asa-text cursor-pointer p-1"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
         >
@@ -106,13 +135,15 @@ export default function Navbar() {
         </button>
       </div>
 
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden border-t border-asa-black/5 md:hidden"
+            transition={{ duration: 0.2 }}
+            className="overflow-hidden border-t border-asa-border bg-asa-surface/95 backdrop-blur-md md:hidden"
           >
             <nav className="flex flex-col gap-1 px-4 pb-6 pt-4">
               {NAV_LINKS.map((item) =>
@@ -123,10 +154,10 @@ export default function Navbar() {
                     end={item.path === "/"}
                     onClick={closeMobile}
                     className={({ isActive }) =>
-                      `rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                      `rounded-lg px-3 py-2.5 text-sm font-medium transition-colors duration-150 cursor-pointer ${
                         isActive
-                          ? "bg-asa-secondary/10 text-asa-secondary"
-                          : "text-asa-black hover:bg-asa-black/5"
+                          ? "bg-asa-primary/10 text-asa-primary"
+                          : "text-asa-muted hover:bg-asa-border hover:text-asa-text"
                       }`
                     }
                   >
@@ -140,7 +171,7 @@ export default function Navbar() {
                           mobileExpanded === item.name ? null : item.name,
                         )
                       }
-                      className="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm font-medium text-asa-black transition-colors hover:bg-asa-black/5"
+                      className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-asa-muted transition-colors hover:bg-asa-border hover:text-asa-text cursor-pointer"
                     >
                       {item.name}
                       <ChevronDown
@@ -157,17 +188,17 @@ export default function Navbar() {
                           exit={{ opacity: 0, height: 0 }}
                           className="overflow-hidden"
                         >
-                          <div className="ml-3 mt-1 flex flex-col gap-1 border-l border-asa-black/10 pl-3">
+                          <div className="ml-3 mt-1 flex flex-col gap-0.5 border-l border-asa-border pl-3">
                             {item.dropdown.map((sub) => (
                               <NavLink
                                 key={sub.path}
                                 to={sub.path}
                                 onClick={closeMobile}
                                 className={({ isActive }) =>
-                                  `rounded-md px-3 py-2 text-sm transition-colors ${
+                                  `rounded-lg px-3 py-2 text-sm transition-colors cursor-pointer ${
                                     isActive
-                                      ? "bg-asa-secondary/10 text-asa-secondary"
-                                      : "text-asa-black hover:bg-asa-black/5"
+                                      ? "text-asa-primary"
+                                      : "text-asa-muted hover:text-asa-text"
                                   }`
                                 }
                               >
@@ -184,7 +215,7 @@ export default function Navbar() {
               <Link
                 to="/auth/login"
                 onClick={closeMobile}
-                className="mt-2 rounded-md bg-asa-secondary px-3 py-2 text-center text-sm font-medium text-white"
+                className="mt-3 rounded-lg bg-asa-primary px-3 py-2.5 text-center text-sm font-semibold text-asa-background"
               >
                 Sign In
               </Link>

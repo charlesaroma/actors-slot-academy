@@ -1,43 +1,114 @@
 /* 1. External Font Imports (Must be at the very top for v4) */
-@import url('https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
 /* 2. Core Tailwind Framework Engine */
 @import "tailwindcss";
 
 /* 3. Unified Theme Configuration & Component Variables */
 @theme {
-  /* Design Tokens Mapping directly into Tailwind utilities */
   --font-headline: "Playfair Display", serif;
   --font-body: "Inter", sans-serif;
+  --font-mono: "Space Mono", monospace;
 
-  --color-asa-primary: var(--asa-black);
-  --color-asa-secondary: var(--asa-terracotta);
-  --color-asa-tertiary: var(--asa-bronze);
-  --color-asa-neutral: var(--asa-grey);
-  --color-asa-background: var(--asa-ivory);
-  --color-asa-surface: var(--asa-white);
+  --color-asa-background:     var(--asa-ink);
+  --color-asa-surface:        var(--asa-ink-raised);
+  --color-asa-primary:        var(--asa-marquee);
+  --color-asa-primary-bright: var(--asa-marquee-bright);
+  --color-asa-text:           var(--asa-spotlight);
+  --color-asa-muted:          var(--asa-ash);
+  --color-asa-accent:         var(--asa-curtain);
+  --color-asa-border:         var(--asa-ink-border);
 }
 
 /* 4. Easy-to-maintain CSS Native Global Variables */
 :root {
-  /* Main System Color Swatches — Classy Palette */
-  --asa-black: #CAA38E;        /* Warm tan text on dark bg */
-  --asa-terracotta: #867369;   /* Muted taupe accent */
-  --asa-bronze: #CAA38E;       /* Warm tan highlights & elite tags */
-  --asa-grey: #867369;         /* Taupe muted metadata */
-  --asa-ivory: #1A1817;        /* Dark charcoal base background */
-  --asa-white: #2C4A30;        /* Dark forest green surface for cards */
+  /* Main System Color Swatches — pulled from the ASA logo */
+  --asa-ink:            #10151F;  /* Base background — navy-black from logo */
+  --asa-ink-raised:     #181F2C;  /* Cards, nav, surfaces one step up from bg */
+  --asa-ink-border:     #1E2636;  /* Dividers, subtle borders */
+  --asa-marquee:        #C99A3E;  /* Gold — the ASA wordmark color */
+  --asa-marquee-bright: #E4B85C;  /* Gold hover/active state */
+  --asa-spotlight:      #F3EFD9;  /* Cream — the tagline color, primary text */
+  --asa-ash:            #8B93A1;  /* Muted secondary text, metadata */
+  --asa-curtain:        #6E2A3A;  /* Deep maroon — secondary accent, tags */
 
-  /* Semantic UI State Variables */
-  --asa-success: #001E00;      /* Deep green — Open Intakes */
-  --asa-warning: #867369;      /* Taupe — Limited slots / Important info */
-  --asa-error: #B91C1C;        /* Required validation / Closed entries */
+  /* Semantic UI State Variables — checked against ink background */
+  --asa-success: #4C9A6A;  /* Open Intakes — readable green on dark bg */
+  --asa-warning: #C99A3E;  /* Limited slots — reuses marquee gold */
+  --asa-error:   #B91C1C;  /* Required validation / Closed entries */
 }
 
 /* 5. Global CSS Overrides */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background-color: var(--asa-ivory);
-  color: var(--asa-black);
+  background-color: var(--asa-ink);
+  color: var(--asa-spotlight);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Cinematic grain overlay on body ── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── Gold glow utility ── */
+.glow-gold {
+  box-shadow: 0 0 30px rgba(201, 154, 62, 0.15), 0 0 60px rgba(201, 154, 62, 0.06);
+}
+
+/* ── Ticket-stub card signature motif ── */
+.card-ticket {
+  background-color: var(--asa-ink-raised);
+  border: 1px solid var(--asa-ink-border);
+  border-radius: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 250ms ease, box-shadow 250ms ease, transform 250ms ease;
+  cursor: pointer;
+}
+.card-ticket::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--asa-marquee), var(--asa-marquee-bright), var(--asa-marquee), transparent);
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+.card-ticket:hover {
+  border-color: rgba(201, 154, 62, 0.4);
+  box-shadow: 0 0 0 1px rgba(201, 154, 62, 0.2), 0 8px 40px rgba(201, 154, 62, 0.1);
+  transform: translateY(-2px);
+}
+.card-ticket:hover::before {
+  opacity: 1;
+}
+
+/* ── Call-sheet mono label utility ── */
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--asa-ash);
+}
+
+/* ── Reduce motion respect ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

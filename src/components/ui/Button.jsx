@@ -2,18 +2,21 @@ import { Link } from "react-router-dom"
 
 const variants = {
   primary:
-    "bg-asa-secondary text-white hover:bg-asa-secondary/90 shadow-sm",
+    "bg-asa-primary text-asa-background hover:bg-asa-primary-bright shadow-sm hover:shadow-[0_0_20px_rgba(201,154,62,0.35)]",
   secondary:
-    "bg-asa-black text-white hover:bg-asa-black/90 shadow-sm",
+    "bg-asa-surface text-asa-text hover:bg-asa-border border border-asa-border",
   outline:
-    "border-2 border-asa-secondary text-asa-secondary hover:bg-asa-secondary hover:text-white",
-  ghost: "text-asa-secondary hover:bg-asa-secondary/10",
+    "border border-asa-primary text-asa-primary hover:bg-asa-primary hover:text-asa-background",
+  ghost:
+    "text-asa-primary hover:bg-asa-primary/10",
+  danger:
+    "bg-asa-accent text-asa-text hover:opacity-90",
 }
 
 const sizes = {
-  sm: "px-3 py-1.5 text-xs",
+  sm: "px-4 py-1.5 text-xs",
   md: "px-5 py-2.5 text-sm",
-  lg: "px-7 py-3 text-base",
+  lg: "px-8 py-3.5 text-base",
 }
 
 export default function Button({
@@ -26,9 +29,9 @@ export default function Button({
   ...props
 }) {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-md font-medium tracking-wide transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-asa-secondary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+    "inline-flex items-center justify-center gap-2 rounded-md font-medium tracking-wide transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-asa-primary focus-visible:ring-offset-2 focus-visible:ring-offset-asa-background disabled:pointer-events-none disabled:opacity-40"
 
-  const cls = `${base} ${variants[variant]} ${sizes[size]} ${className}`
+  const cls = `${base} ${variants[variant] ?? variants.primary} ${sizes[size] ?? sizes.md} ${className}`
 
   if (to) {
     return (

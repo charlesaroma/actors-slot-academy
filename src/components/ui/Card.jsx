@@ -1,7 +1,8 @@
 const variants = {
-  default: "bg-asa-white border border-asa-black/10",
-  elevated: "bg-asa-white shadow-md border border-asa-black/5",
-  bordered: "bg-transparent border-2 border-asa-black/10",
+  default:  "bg-asa-surface border border-asa-border",
+  elevated: "bg-asa-surface shadow-lg shadow-black/30 border border-asa-border",
+  bordered: "bg-transparent border border-asa-border",
+  ticket:   "card-ticket",
 }
 
 export default function Card({
@@ -14,11 +15,11 @@ export default function Card({
 }) {
   return (
     <div
-      className={`rounded-xl transition-all duration-200 ${
+      className={`rounded-xl transition-all duration-250 ${
         padding ? "p-6" : ""
       } ${variants[variant]} ${
-        hover
-          ? "hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
+        hover && variant !== "ticket"
+          ? "hover:shadow-xl hover:shadow-black/40 hover:-translate-y-1 cursor-pointer"
           : ""
       } ${className}`}
       {...props}

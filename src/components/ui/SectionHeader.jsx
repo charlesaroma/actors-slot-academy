@@ -3,22 +3,25 @@ export default function SectionHeader({
   title,
   description,
   center = false,
+  light = false,
   className = "",
 }) {
   return (
     <div className={`max-w-2xl ${center ? "mx-auto text-center" : ""} ${className}`}>
       {label && (
-        <span className="inline-block rounded-full bg-asa-secondary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-asa-secondary">
+        <span className="label-mono inline-block text-asa-primary">
           {label}
         </span>
       )}
       {title && (
-        <h2 className="mt-3 font-headline text-3xl font-bold leading-tight text-asa-black sm:text-4xl">
+        <h2 className={`mt-3 font-headline text-3xl font-bold leading-tight sm:text-4xl ${
+          light ? "text-asa-background" : "text-asa-text"
+        }`}>
           {title}
         </h2>
       )}
       {description && (
-        <p className="mt-3 text-base leading-relaxed text-asa-grey">
+        <p className="mt-4 text-base leading-relaxed text-asa-muted">
           {description}
         </p>
       )}
