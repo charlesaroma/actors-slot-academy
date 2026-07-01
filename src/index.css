@@ -1,0 +1,43 @@
+/* 1. External Font Imports (Must be at the very top for v4) */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&display=swap');
+
+/* 2. Core Tailwind Framework Engine */
+@import "tailwindcss";
+
+/* 3. Unified Theme Configuration & Component Variables */
+@theme {
+  /* Design Tokens Mapping directly into Tailwind utilities */
+  --font-headline: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+
+  --color-asa-primary: var(--asa-black);
+  --color-asa-secondary: var(--asa-terracotta);
+  --color-asa-tertiary: var(--asa-bronze);
+  --color-asa-neutral: var(--asa-grey);
+  --color-asa-background: var(--asa-ivory);
+  --color-asa-surface: var(--asa-white);
+}
+
+/* 4. Easy-to-maintain CSS Native Global Variables */
+:root {
+  /* Main System Color Swatches */
+  --asa-black: #F5F5F4;        /* Light text on dark bg */
+  --asa-terracotta: #C2410C;   /* Deep African Clay Accent */
+  --asa-bronze: #CD7F32;       /* Warm Highlights & Elite Tags */
+  --asa-grey: #A8A29E;         /* Muted metadata on dark bg */
+  --asa-ivory: #1A1817;        /* Dark charcoal base background */
+  --asa-white: #292524;        /* Dark stone surface for cards */
+
+  /* Semantic UI State Variables */
+  --asa-success: #15803D;      /* Successful submissions / Open Intakes */
+  --asa-warning: #B45309;      /* Limited slots left / Important info */
+  --asa-error: #B91C1C;        /* Required validation / Closed entries */
+}
+
+/* 5. Global CSS Overrides */
+body {
+  background-color: var(--asa-ivory);
+  color: var(--asa-black);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
