@@ -76,7 +76,7 @@ export const MODULES = [
 ]
 
 export const TUITION = {
-  amount: "NGN 150,000",
+  amount: "UGX 600,000",
   whatIsCovered: [
     "All 16 weeks of training",
     "Printed course materials",
@@ -95,21 +95,21 @@ export const SCHOOLS_OUTREACH = {
       description:
         "Half-day and full-day workshops delivered on school premises. Covering drama basics, confidence building, and public speaking.",
       duration: "Half-day or full-day",
-     适合: "Secondary schools (JSS1 – SSS3)",
+     适合: "Suitable for secondary schools (S1 – S6)",
     },
     {
       title: "After-School Drama Clubs",
       description:
         "A structured 12-week programme where students learn performance skills and put on an end-of-term showcase for parents and teachers.",
       duration: "12 weeks, 2 sessions per week",
-     适合: "Schools with existing creative arts clubs",
+     适合: "Suitable for schools with existing creative arts clubs",
     },
     {
       title: "Teacher Training in Drama Pedagogy",
       description:
         "Equipping teachers with tools to use drama techniques in their classrooms — across English, History, and Civic Education.",
       duration: "3-day intensive",
-     适合: "Subject teachers & school administrators",
+     适合: "Suitable for subject teachers & school administrators",
     },
   ],
 }

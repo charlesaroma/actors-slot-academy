@@ -16,7 +16,7 @@ export default function Hero() {
           className="max-w-3xl"
         >
           <span className="inline-block rounded-full bg-asa-secondary/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-asa-secondary">
-            Est. 2024 · Lagos, Nigeria
+            Est. 2024 · Kampala, Uganda
           </span>
 
           <h1 className="mt-6 font-headline text-5xl font-bold leading-tight text-asa-white sm:text-6xl lg:text-7xl">

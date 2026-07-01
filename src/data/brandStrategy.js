@@ -50,7 +50,7 @@ export const MISSION_VISION = {
 }
 
 export const DIRECTOR = {
-  name: "Amina Okafor",
+  name: "Amina Nantongo",
   title: "Founder & Creative Director",
   image: "https://images.unsplash.com/photo-1568782517100-09bf22d88c2d?w=400&h=400&fit=crop",
   message:
@@ -91,6 +91,7 @@ export const SOCIAL_LINKS = {
 
 export const CONTACT_INFO = {
   email: "hello@actorsslotacademy.com",
-  phone: "+234 800 ASA-TALENT",
-  address: "14 Freedom Way, Victoria Island, Lagos, Nigeria",
+  phone: "+256 800 ASA-TALENT",
+  address: "14 Freedom Way, Kololo, Kampala, Uganda",
+  hours: "Mon–Fri, 9:00 AM – 5:00 PM",
 }

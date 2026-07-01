@@ -101,7 +101,7 @@ export default function FormSection() {
                 value={form.phone}
                 onChange={handleChange}
                 className="w-full rounded-xl border border-asa-black/10 bg-asa-white px-4 py-2.5 text-sm text-asa-black placeholder:text-asa-grey/60 focus:border-asa-secondary focus:outline-none"
-                placeholder="+234 XXX XXX XXXX"
+                placeholder="+256 XXX XXX XXX"
               />
             </div>
             <div>

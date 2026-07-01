@@ -20,17 +20,17 @@
 
 /* 4. Easy-to-maintain CSS Native Global Variables */
 :root {
-  /* Main System Color Swatches */
-  --asa-black: #F5F5F4;        /* Light text on dark bg */
-  --asa-terracotta: #C2410C;   /* Deep African Clay Accent */
-  --asa-bronze: #CD7F32;       /* Warm Highlights & Elite Tags */
-  --asa-grey: #A8A29E;         /* Muted metadata on dark bg */
+  /* Main System Color Swatches — Classy Palette */
+  --asa-black: #CAA38E;        /* Warm tan text on dark bg */
+  --asa-terracotta: #867369;   /* Muted taupe accent */
+  --asa-bronze: #CAA38E;       /* Warm tan highlights & elite tags */
+  --asa-grey: #867369;         /* Taupe muted metadata */
   --asa-ivory: #1A1817;        /* Dark charcoal base background */
-  --asa-white: #292524;        /* Dark stone surface for cards */
+  --asa-white: #2C4A30;        /* Dark forest green surface for cards */
 
   /* Semantic UI State Variables */
-  --asa-success: #15803D;      /* Successful submissions / Open Intakes */
-  --asa-warning: #B45309;      /* Limited slots left / Important info */
+  --asa-success: #001E00;      /* Deep green — Open Intakes */
+  --asa-warning: #867369;      /* Taupe — Limited slots / Important info */
   --asa-error: #B91C1C;        /* Required validation / Closed entries */
 }
 

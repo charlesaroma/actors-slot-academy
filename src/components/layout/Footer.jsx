@@ -49,7 +49,7 @@ export default function Footer() {
               <li>Kampala, Uganda</li>
               <li>
                 <a
-                  href="tel:+260123456789"
+                  href="tel:+256123456789"
                   className="transition-colors hover:text-asa-ivory"
                 >
                   +256 123 456 789

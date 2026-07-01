@@ -27,7 +27,7 @@ export default function YoungTalentHero() {
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-asa-grey sm:text-lg">
             Our Schools Outreach programme partners with primary and secondary
-            institutions across Lagos to identify raw talent, build confidence,
+            institutions across Kampala to identify raw talent, build confidence,
             and plant seeds for future careers in the creative industries.
           </p>
 
