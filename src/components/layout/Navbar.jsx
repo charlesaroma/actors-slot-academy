@@ -24,10 +24,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
         scrolled
-          ? "bg-asa-background/90 backdrop-blur-md border-b border-asa-border shadow-lg shadow-black/20"
-          : "bg-transparent"
+          ? "bg-asa-background/90 backdrop-blur-md border-asa-border shadow-lg shadow-black/20"
+          : "bg-transparent border-transparent"
       }`}
     >
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-4">

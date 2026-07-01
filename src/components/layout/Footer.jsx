@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { NAV_LINKS } from "../../data/navigation"
+import { SOCIAL_LINKS } from "../../data/brandStrategy"
 
 export default function Footer() {
   return (
@@ -84,13 +85,20 @@ export default function Footer() {
           <div>
             <h4 className="label-mono mb-5">Follow Us</h4>
             <ul className="space-y-2.5 text-sm text-asa-muted">
-              {["Instagram", "Facebook", "YouTube", "TikTok"].map((platform) => (
-                <li key={platform}>
+              {[
+                { name: "Instagram", url: SOCIAL_LINKS.instagram },
+                { name: "Facebook", url: SOCIAL_LINKS.facebook },
+                { name: "YouTube", url: SOCIAL_LINKS.youtube },
+                { name: "TikTok", url: SOCIAL_LINKS.tiktok },
+              ].map(({ name, url }) => (
+                <li key={name}>
                   <a
-                    href="#"
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="transition-colors duration-150 hover:text-asa-primary"
                   >
-                    {platform}
+                    {name}
                   </a>
                 </li>
               ))}

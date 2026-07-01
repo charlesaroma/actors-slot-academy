@@ -1,13 +1,13 @@
 /* 1. External Font Imports (Must be at the very top for v4) */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@144,400;144,500;144,600;144,700;144,800&family=Work+Sans:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
 /* 2. Core Tailwind Framework Engine */
 @import "tailwindcss";
 
 /* 3. Unified Theme Configuration & Component Variables */
 @theme {
-  --font-headline: "Playfair Display", serif;
-  --font-body: "Inter", sans-serif;
+  --font-headline: "Fraunces", serif;
+  --font-body: "Work Sans", sans-serif;
   --font-mono: "Space Mono", monospace;
 
   --color-asa-background:     var(--asa-ink);
