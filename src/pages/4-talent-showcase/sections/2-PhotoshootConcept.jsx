@@ -6,7 +6,7 @@ const concepts = [
   {
     title: "Headshots",
     desc: "Professional-grade portraits for casting submissions, agencies, and personal branding.",
-    image: "https://images.unsplash.com/photo-1628682814595-a3f0816b25ff?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1539572670683-d2d2c6b7d1e0?w=600&q=80",
   },
   {
     title: "Editorial",

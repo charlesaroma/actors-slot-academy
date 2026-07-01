@@ -7,8 +7,8 @@ const GALLERY_ITEMS = [
   {
     id: "g1",
     category: "Headshots",
-    title: "Catherine Nantongo — Film & TV Portfolio",
-    image: "https://images.unsplash.com/photo-1530785602389-07594beb8b73?w=600&q=80",
+    title: "Joshua Kintu — Actor's Portfolio",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a37e?w=600&q=80",
     photographer: "M. Kato",
   },
   {
@@ -28,8 +28,8 @@ const GALLERY_ITEMS = [
   {
     id: "g4",
     category: "Headshots",
-    title: "Sarah Nakato — Classical Portrait",
-    image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80",
+    title: "David Okello — Stage Presence Portrait",
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45b1d?w=600&q=80",
     photographer: "M. Kato",
   },
   {

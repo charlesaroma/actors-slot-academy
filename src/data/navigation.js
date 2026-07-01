@@ -7,6 +7,7 @@ export const NAV_LINKS = [
     name: "The Academy",
     dropdown: [
       { name: "About Our Story", path: "/about" },
+      { name: "Programmes", path: "/programmes" },
       { name: "Schools Outreach", path: "/schools-outreach" },
     ],
   },

@@ -10,7 +10,9 @@ import DynamicTalentProfile from "../pages/4-talent-showcase/DynamicTalentProfil
 import GalleryPage from "../pages/5-gallery/GalleryPage"
 import EventsPage from "../pages/6-events-workshops/EventsPage"
 import ContactPage from "../pages/7-contact/ContactPage"
+import ProgrammesPage from "../pages/8-programmes/ProgrammesPage"
 import AuthPage from "../pages/0-auth/AuthPage"
+import NotFoundPage from "../pages/9-not-found/NotFoundPage"
 
 import OverviewPage from "../dashboard/pages/1-overview/OverviewPage"
 import ProfilesManagerPage from "../dashboard/pages/2-profiles-manager/ProfilesManagerPage"
@@ -30,8 +32,10 @@ export default function AppRoutes() {
         <Route path="talents/:id" element={<DynamicTalentProfile />} />
         <Route path="gallery" element={<GalleryPage />} />
         <Route path="events" element={<EventsPage />} />
+        <Route path="programmes" element={<ProgrammesPage />} />
         <Route path="contact" element={<ContactPage />} />
         <Route path="auth/*" element={<AuthPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
 
       {/* Dashboard Subsystem with Sidebar Shell */}

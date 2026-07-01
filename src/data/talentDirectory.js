@@ -107,4 +107,40 @@ export const TALENTS = [
       "https://images.unsplash.com/photo-1527201987695-67c06571957e?w=600&h=800&fit=crop",
     ],
   },
+  {
+    id: "joshua-kintu",
+    name: "Joshua Kintu",
+    age: 25,
+    category: "Film & TV",
+    location: "Kampala, Uganda",
+    rating: 4.7,
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop",
+    languages: ["English", "Luganda", "Swahili"],
+    bio: "A disciplined performer trained in classical African theatre and modern screen techniques. Joshua brings intensity and grace to every role.",
+    skills: ["Method Acting", "Physical Theatre", "Dialect Coaching", "Fight Choreography"],
+    reels: [
+      { title: "Monologue: 'The Last Warrior'", url: "https://youtube.com/watch?v=example7" },
+    ],
+    gallery: [
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop",
+    ],
+  },
+  {
+    id: "david-okello",
+    name: "David Okello",
+    age: 27,
+    category: "Theatre",
+    location: "Lira, Uganda",
+    rating: 4.8,
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop",
+    languages: ["English", "Luo", "Swahili"],
+    bio: "A commanding stage performer with roots in Acholi folk tradition. David leads every scene with raw presence and powerful vocal delivery.",
+    skills: ["Stage Combat", "Voice Projection", "Storytelling", "Directing"],
+    reels: [
+      { title: "Performance: 'Echoes of the Nile'", url: "https://youtube.com/watch?v=example8" },
+    ],
+    gallery: [
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=800&fit=crop",
+    ],
+  },
 ]
