@@ -5,7 +5,7 @@ import { DIRECTOR } from "../../../data/brandStrategy"
 export default function DirectorsMessage() {
   return (
     <section className="relative overflow-hidden bg-asa-black py-24">
-      <div className="absolute right-0 top-0 h-full w-1/3 bg-[url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80')] bg-cover bg-center opacity-20" />
+      <div className="absolute right-0 top-0 h-full w-1/3 bg-[url('https://images.unsplash.com/photo-1510736769521-207ed84f191e?w=800&q=80')] bg-cover bg-center opacity-20" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div

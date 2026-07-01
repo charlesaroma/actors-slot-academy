@@ -6,7 +6,7 @@ export const TALENTS = [
     category: "Film & TV",
     location: "Lagos, Nigeria",
     rating: 4.8,
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop",
+    image: "https://images.unsplash.com/photo-1530785602389-07594beb8b73?w=400&h=500&fit=crop",
     languages: ["English", "Igbo", "Pidgin"],
     bio: "A fearless screen actor with a gift for raw, emotional storytelling. Zuri brings depth and vulnerability to every role.",
     skills: ["Method Acting", "Accents", "Stunts", "Improvisation"],
@@ -14,7 +14,7 @@ export const TALENTS = [
       { title: "Monologue: 'The Last Son'", url: "https://youtube.com/watch?v=example1" },
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1530785602389-07594beb8b73?w=600&h=800&fit=crop",
     ],
   },
   {
@@ -24,7 +24,7 @@ export const TALENTS = [
     category: "Theatre",
     location: "Abuja, Nigeria",
     rating: 4.9,
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop",
+    image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&h=500&fit=crop",
     languages: ["English", "Hausa", "Yoruba"],
     bio: "A commanding stage presence with classical training in African theatre traditions. Amara moves audiences to laughter and tears.",
     skills: ["Stage Combat", "Choral Singing", "Physical Theatre", "Directing"],
@@ -32,7 +32,7 @@ export const TALENTS = [
       { title: "Stage: 'Mama's Last Dance'", url: "https://youtube.com/watch?v=example2" },
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&h=800&fit=crop",
     ],
   },
   {
@@ -42,7 +42,7 @@ export const TALENTS = [
     category: "Film & TV",
     location: "Accra, Ghana",
     rating: 4.7,
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop",
+    image: "https://images.unsplash.com/photo-1593351799227-75df2026356b?w=400&h=500&fit=crop",
     languages: ["English", "Twi", "Ga"],
     bio: "Kofi's natural charisma and discipline make him a standout. Trained in both Ghanaian folk performance and modern screen acting.",
     skills: ["Voice Over", "Comedy", "Dance", "Script Writing"],
@@ -50,7 +50,7 @@ export const TALENTS = [
       { title: "Scene: 'Crossing Borders'", url: "https://youtube.com/watch?v=example3" },
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1593351799227-75df2026356b?w=600&h=800&fit=crop",
     ],
   },
   {
@@ -60,7 +60,7 @@ export const TALENTS = [
     category: "Voice Acting",
     location: "Enugu, Nigeria",
     rating: 4.6,
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=500&fit=crop",
+    image: "https://images.unsplash.com/photo-1522938974444-f12497b69347?w=400&h=500&fit=crop",
     languages: ["English", "Igbo", "French"],
     bio: "A voice artist with remarkable range — from animated characters to documentary narration. Nkechi's voice carries emotion and authority.",
     skills: ["Voice Modulation", "Accents", "Narration", "Dubbing"],
@@ -68,7 +68,7 @@ export const TALENTS = [
       { title: "Voice Demo Reel 2026", url: "https://youtube.com/watch?v=example4" },
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1522938974444-f12497b69347?w=600&h=800&fit=crop",
     ],
   },
   {
@@ -78,7 +78,7 @@ export const TALENTS = [
     category: "Theatre",
     location: "Ibadan, Nigeria",
     rating: 4.5,
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop",
+    image: "https://images.unsplash.com/photo-1523824921871-d6f1a15151f1?w=400&h=500&fit=crop",
     languages: ["English", "Yoruba", "Pidgin"],
     bio: "Tunde is a griot-in-training who blends traditional Yoruba storytelling with contemporary theatre. A magnetic performer.",
     skills: ["Drumming", "Storytelling", "Movement", "Puppetry"],
@@ -86,7 +86,7 @@ export const TALENTS = [
       { title: "Performance: 'The Talking Drum'", url: "https://youtube.com/watch?v=example5" },
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1523824921871-d6f1a15151f1?w=600&h=800&fit=crop",
     ],
   },
   {
@@ -96,7 +96,7 @@ export const TALENTS = [
     category: "Film & TV",
     location: "Port Harcourt, Nigeria",
     rating: 4.9,
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=500&fit=crop",
+    image: "https://images.unsplash.com/photo-1527201987695-67c06571957e?w=400&h=500&fit=crop",
     languages: ["English", "Ibibio", "Pidgin"],
     bio: "A rising star with incredible emotional range. Chioma's screen tests have been described as 'hauntingly real' by industry directors.",
     skills: ["Meisner Technique", "Screen Combat", "Dialect Coaching", "Singing"],
@@ -104,7 +104,7 @@ export const TALENTS = [
       { title: "Audition: 'Silent Waters'", url: "https://youtube.com/watch?v=example6" },
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1527201987695-67c06571957e?w=600&h=800&fit=crop",
     ],
   },
 ]

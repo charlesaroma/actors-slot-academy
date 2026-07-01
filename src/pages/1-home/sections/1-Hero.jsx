@@ -5,7 +5,7 @@ import Button from "../../../components/ui/Button"
 export default function Hero() {
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-asa-black">
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1920&q=80')] bg-cover bg-center opacity-30" />
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558970439-add78fc68990?w=1920&q=80')] bg-cover bg-center opacity-30" />
       <div className="absolute inset-0 bg-gradient-to-r from-asa-black/95 via-asa-black/80 to-asa-black/60" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-32 sm:px-6 lg:px-8">

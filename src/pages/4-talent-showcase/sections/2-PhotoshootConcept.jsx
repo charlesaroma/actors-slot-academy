@@ -6,17 +6,17 @@ const concepts = [
   {
     title: "Headshots",
     desc: "Professional-grade portraits for casting submissions, agencies, and personal branding.",
-    image: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1628682814595-a3f0816b25ff?w=600&q=80",
   },
   {
     title: "Editorial",
     desc: "High-fashion editorial spreads that showcase range, style, and visual storytelling ability.",
-    image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1532076904124-d4e8fe7fbbec?w=600&q=80",
   },
   {
     title: "Theatrical",
     desc: "Dynamic character-driven shoots that bring monologues and personas to life through stills.",
-    image: "https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1565798846807-2af22c843402?w=600&q=80",
   },
 ]
 

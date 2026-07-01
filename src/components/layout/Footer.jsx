@@ -46,13 +46,13 @@ export default function Footer() {
               Contact
             </h4>
             <ul className="space-y-2 text-sm text-asa-grey">
-              <li>Lusaka, Zambia</li>
+              <li>Kampala, Uganda</li>
               <li>
                 <a
                   href="tel:+260123456789"
                   className="transition-colors hover:text-asa-ivory"
                 >
-                  +260 123 456 789
+                  +256 123 456 789
                 </a>
               </li>
               <li>

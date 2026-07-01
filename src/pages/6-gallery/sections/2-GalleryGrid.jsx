@@ -3,32 +3,32 @@ import SectionHeader from "../../../components/ui/SectionHeader"
 
 const galleryItems = [
   {
-    src: "https://images.unsplash.com/photo-1503095396549-807759245b35?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1603647228752-7637a91fc9c7?w=800&q=80",
     alt: "Stage Performance",
     label: "End of Term Showcase",
   },
   {
-    src: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1576724196706-3f23f51ea351?w=800&q=80",
     alt: "Workshop Session",
     label: "Monologue Workshop",
   },
   {
-    src: "https://images.unsplash.com/photo-1540039155733-5bb30b53e14c?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1542775846-e6c1e8aba884?w=800&q=80",
     alt: "Photoshoot",
     label: "Portrait Session",
   },
   {
-    src: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1579539760267-b2e78d9d735e?w=800&q=80",
     alt: "Audience",
     label: "Open Mic Night",
   },
   {
-    src: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1603647284638-60268b672f55?w=800&q=80",
     alt: "Behind the Scenes",
     label: "Rehearsal Week",
   },
   {
-    src: "https://images.unsplash.com/photo-1582196016295-f2e6f792b33e?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1556300219-2d2fdd6266d3?w=800&q=80",
     alt: "Group Photo",
     label: "Q1 2026 Cohort",
   },

@@ -52,7 +52,7 @@ export const MISSION_VISION = {
 export const DIRECTOR = {
   name: "Amina Okafor",
   title: "Founder & Creative Director",
-  image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
+  image: "https://images.unsplash.com/photo-1568782517100-09bf22d88c2d?w=400&h=400&fit=crop",
   message:
     "When I started ASA, I wanted to create a space where African talent could find their voice — not by imitating foreign styles, but by digging deep into who we are. Every actor who walks through our doors carries stories that deserve to be told. Our job is to give them the tools, the discipline, and the courage to tell those stories unapologetically.",
 }
