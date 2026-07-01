@@ -5,7 +5,7 @@ import SectionHeader from "../../../components/ui/SectionHeader"
 
 export default function MissionVision() {
   return (
-    <section className="bg-asa-ivory py-24">
+    <section className="bg-asa-background py-28 relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
           label="Our Purpose"
@@ -19,15 +19,16 @@ export default function MissionVision() {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="rounded-2xl bg-asa-white p-8 shadow-sm"
+            transition={{ duration: 0.6 }}
+            className="card-ticket p-8"
           >
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-asa-secondary/10">
-              <Target className="h-6 w-6 text-asa-secondary" />
+            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-asa-primary/10 text-asa-primary">
+              <Target className="h-6 w-6" />
             </div>
-            <h3 className="font-headline text-xl font-bold text-asa-black">
+            <h3 className="font-headline text-2xl font-bold text-asa-text">
               Our Mission
             </h3>
-            <p className="mt-3 text-base leading-relaxed text-asa-grey">
+            <p className="mt-3 text-base leading-relaxed text-asa-muted">
               {MISSION_VISION.mission}
             </p>
           </motion.div>
@@ -36,15 +37,16 @@ export default function MissionVision() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="rounded-2xl bg-asa-white p-8 shadow-sm"
+            transition={{ duration: 0.6 }}
+            className="card-ticket p-8"
           >
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-asa-secondary/10">
-              <Eye className="h-6 w-6 text-asa-secondary" />
+            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-asa-primary/10 text-asa-primary">
+              <Eye className="h-6 w-6" />
             </div>
-            <h3 className="font-headline text-xl font-bold text-asa-black">
+            <h3 className="font-headline text-2xl font-bold text-asa-text">
               Our Vision
             </h3>
-            <p className="mt-3 text-base leading-relaxed text-asa-grey">
+            <p className="mt-3 text-base leading-relaxed text-asa-muted">
               {MISSION_VISION.vision}
             </p>
           </motion.div>

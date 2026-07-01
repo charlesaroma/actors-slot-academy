@@ -24,7 +24,10 @@ const entities = [
 
 export default function BrandArchitechture() {
   return (
-    <section className="bg-asa-white py-24">
+    <section className="bg-asa-background py-28 relative overflow-hidden">
+      {/* Top rule */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-asa-border to-transparent" />
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
           label="Ecosystem"
@@ -43,14 +46,16 @@ export default function BrandArchitechture() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.12 }}
-                className="rounded-2xl border border-asa-black/10 bg-asa-ivory p-8 text-center"
+                className="card-ticket p-8 text-center"
               >
-                <Icon className="mx-auto h-10 w-10 text-asa-secondary" />
-                <h3 className="mt-4 font-headline text-lg font-bold text-asa-black">
+                <Icon className="mx-auto h-10 w-10 text-asa-primary" />
+                <h3 className="mt-4 font-headline text-xl font-bold text-asa-text group-hover:text-asa-primary transition-colors duration-250">
                   {entity.name}
                 </h3>
-                <p className="mt-1 text-sm text-asa-grey">{entity.tagline}</p>
-                <p className="mt-3 text-sm leading-relaxed text-asa-grey/80">
+                {entity.tagline && (
+                  <p className="mt-1 label-mono text-[9px] text-asa-muted">{entity.tagline}</p>
+                )}
+                <p className="mt-3 text-sm leading-relaxed text-asa-muted">
                   {entity.desc}
                 </p>
               </motion.div>

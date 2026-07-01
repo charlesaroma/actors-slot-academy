@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom"
 import Layout from "../components/layout/Layout"
+import DashboardLayout from "../dashboard/components/DashboardLayout"
 
 import HomePage from "../pages/1-home/HomePage"
 import AboutPage from "../pages/2-about/AboutPage"
@@ -20,6 +21,7 @@ import SettingsPage from "../dashboard/pages/settings/SettingsPage"
 export default function AppRoutes() {
   return (
     <Routes>
+      {/* Public Pages with Navigation Header & Footer */}
       <Route element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="about" element={<AboutPage />} />
@@ -30,6 +32,10 @@ export default function AppRoutes() {
         <Route path="events" element={<EventsPage />} />
         <Route path="contact" element={<ContactPage />} />
         <Route path="auth/*" element={<AuthPage />} />
+      </Route>
+
+      {/* Dashboard Subsystem with Sidebar Shell */}
+      <Route element={<DashboardLayout />}>
         <Route path="dashboard" element={<OverviewPage />} />
         <Route path="dashboard/profiles" element={<ProfilesManagerPage />} />
         <Route path="dashboard/media-vault" element={<MediaVaultPage />} />

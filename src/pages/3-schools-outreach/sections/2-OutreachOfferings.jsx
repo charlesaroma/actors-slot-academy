@@ -13,46 +13,44 @@ const icons = {
 }
 
 export default function OutreachOfferings() {
-  const highlights = [
-    { label: "Duration", key: "duration", icon: icons.duration },
-    { label: "Class Size", key: "classSize", icon: icons.classSize },
-    { label: "Modules", key: "modules", icon: icons.modules },
-    { label: "Certification", key: "certification", icon: icons.certification },
-    { label: "Mentorship", key: "mentorship", icon: icons.mentorship },
-    { label: "Post-Programme", key: "support", icon: icons.support },
-  ]
-
   return (
-    <section className="bg-asa-ivory py-24">
+    <section className="bg-asa-surface py-28 relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          label="Programme"
+          label="Offerings"
           title="What We Offer Schools"
-          description="A structured curriculum delivered at no cost to partnering institutions."
+          description="Structured drama and performance programmes delivered by the academy."
           center
         />
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {highlights.map((item, i) => {
-            const value = SCHOOLS_OUTREACH[item.key]
-            const Icon = item.icon
-            return (
-              <motion.div
-                key={item.key}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="rounded-xl bg-asa-white p-6 shadow-sm"
-              >
-                <Icon className="h-6 w-6 text-asa-secondary" />
-                <p className="mt-3 text-sm font-medium text-asa-black">
-                  {item.label}
+        <div className="mt-16 grid gap-8 lg:grid-cols-3">
+          {SCHOOLS_OUTREACH.programmes.map((program, i) => (
+            <motion.div
+              key={program.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.12 }}
+              className="card-ticket p-8 flex flex-col justify-between"
+            >
+              <div>
+                <span className="label-mono text-asa-primary text-[10px]">
+                  {program.duration}
+                </span>
+                <h3 className="mt-3 font-headline text-xl font-bold text-asa-text">
+                  {program.title}
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-asa-muted">
+                  {program.description}
                 </p>
-                <p className="mt-1 text-sm text-asa-grey">{value}</p>
-              </motion.div>
-            )
-          })}
+              </div>
+
+              <div className="mt-6 border-t border-asa-border pt-4 text-xs text-asa-muted">
+                <span className="font-semibold text-asa-primary">Suitable for: </span>
+                {program.适合}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

@@ -11,9 +11,12 @@ const details = [
 
 export default function LocationDetails() {
   return (
-    <section className="bg-asa-white py-24">
+    <section className="bg-asa-background py-28 relative overflow-hidden">
+      {/* Divider line top */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-asa-border to-transparent" />
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-4xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {details.map((item, i) => {
             const Icon = item.icon
             return (
@@ -23,13 +26,13 @@ export default function LocationDetails() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="rounded-xl border border-asa-black/10 bg-asa-ivory p-6 text-center"
+                className="card-ticket p-6 text-center"
               >
-                <Icon className="mx-auto h-6 w-6 text-asa-secondary" />
-                <h3 className="mt-3 text-sm font-semibold text-asa-black">
+                <Icon className="mx-auto h-6 w-6 text-asa-primary" />
+                <h3 className="mt-4 label-mono text-asa-primary text-[10px]">
                   {item.label}
                 </h3>
-                <p className="mt-1 text-sm text-asa-grey">{item.value}</p>
+                <p className="mt-2 text-sm text-asa-text font-medium leading-relaxed">{item.value}</p>
               </motion.div>
             )
           })}

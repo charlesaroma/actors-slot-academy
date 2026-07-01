@@ -22,7 +22,10 @@ const concepts = [
 
 export default function PhotoshootConcept() {
   return (
-    <section className="bg-asa-white py-24">
+    <section className="bg-asa-surface py-28 relative overflow-hidden">
+      {/* Top rule */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-asa-border to-transparent" />
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
           label="Photoshoot"
@@ -35,24 +38,24 @@ export default function PhotoshootConcept() {
           {concepts.map((item, i) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.12 }}
-              className="group relative overflow-hidden rounded-2xl"
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, delay: i * 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="group relative overflow-hidden rounded-2xl border border-asa-border bg-asa-background cursor-pointer"
             >
               <div className="aspect-[4/5] overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
-              <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6">
-                <h3 className="font-headline text-lg font-bold text-white">
+              <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-asa-background via-asa-background/20 to-transparent p-6">
+                <h3 className="font-headline text-xl font-bold text-asa-primary group-hover:text-asa-primary-bright transition-colors duration-250">
                   {item.title}
                 </h3>
-                <p className="mt-1 text-sm text-white/70">{item.desc}</p>
+                <p className="mt-2 text-sm text-asa-text/80">{item.desc}</p>
               </div>
             </motion.div>
           ))}
