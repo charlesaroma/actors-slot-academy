@@ -1,16 +1,20 @@
 import { NavLink, Link, useNavigate } from "react-router-dom"
-import { ChevronLeft, ChevronRight, LayoutDashboard, UserSquare2, FolderHeart, FileAudio, Settings, LogOut } from "lucide-react"
+import { ChevronLeft, ChevronRight, LayoutDashboard, Users, Image, CalendarRange, BookOpen, Vote, Settings, LogOut } from "lucide-react"
+import { useAuth } from "../../contexts/AuthContext"
 
 const links = [
   { name: "Overview", path: "/dashboard", icon: LayoutDashboard },
-  { name: "Casting Profile", path: "/dashboard/profiles", icon: UserSquare2 },
-  { name: "Media Vault", path: "/dashboard/media-vault", icon: FolderHeart },
-  { name: "Monologue Lab", path: "/dashboard/monologue-lab", icon: FileAudio },
+  { name: "Talents", path: "/dashboard/talents", icon: Users },
+  { name: "Gallery", path: "/dashboard/gallery", icon: Image },
+  { name: "Events", path: "/dashboard/events", icon: CalendarRange },
+  { name: "Programmes", path: "/dashboard/programmes", icon: BookOpen },
+  { name: "Voting", path: "/dashboard/voting", icon: Vote },
   { name: "Settings", path: "/dashboard/settings", icon: Settings },
 ]
 
 export default function Sidebar({ collapsed, onToggle }) {
   const navigate = useNavigate()
+  const { auth, logout } = useAuth()
 
   return (
     <aside className={`fixed top-0 left-0 h-screen bg-asa-surface border-r border-asa-border z-50 flex flex-col transition-all duration-300 ease-in-out ${
@@ -24,7 +28,7 @@ export default function Sidebar({ collapsed, onToggle }) {
           ) : (
             <div className="flex flex-col leading-none">
               <span className="font-headline text-2xl font-bold tracking-tight text-asa-primary group-hover:text-asa-primary-bright transition-colors">ASA</span>
-              <span className="label-mono text-[9px] text-asa-muted tracking-[0.2em] mt-1">Student Portal</span>
+              <span className="label-mono text-[9px] text-asa-muted tracking-[0.2em] mt-1">Admin Panel</span>
             </div>
           )}
         </Link>
@@ -35,7 +39,7 @@ export default function Sidebar({ collapsed, onToggle }) {
         )}
       </div>
 
-      {/* Collapse button when collapsed - placed below logo */}
+      {/* Collapse button when collapsed */}
       {collapsed && (
         <div className="flex justify-center py-3 border-b border-asa-border">
           <button onClick={onToggle} className="p-1 text-asa-muted hover:text-asa-text transition-colors cursor-pointer" aria-label="Expand sidebar">
@@ -76,36 +80,36 @@ export default function Sidebar({ collapsed, onToggle }) {
         {collapsed ? (
           <div className="flex flex-col items-center gap-3">
             <div className="h-8 w-8 rounded-full bg-asa-primary/20 flex items-center justify-center font-bold text-asa-primary font-headline text-xs border border-asa-primary/30">
-              CN
+              A
             </div>
           </div>
         ) : (
           <>
             <div className="flex items-center gap-3 mb-4 px-2">
               <div className="h-10 w-10 rounded-full bg-asa-primary/20 flex items-center justify-center font-bold text-asa-primary font-headline border border-asa-primary/30">
-                CN
+                A
               </div>
               <div>
-                <p className="text-sm font-bold text-asa-text">C. Nantongo</p>
-                <p className="label-mono text-[8px] text-asa-muted">Dry Season Cohort</p>
+                <p className="text-sm font-bold text-asa-text">{auth?.user?.name ?? "Admin"}</p>
+                <p className="label-mono text-[8px] text-asa-muted">Administrator</p>
               </div>
             </div>
             <button
-              onClick={() => navigate("/")}
+              onClick={logout}
               className="flex items-center gap-3 w-full px-4 py-2.5 rounded-lg text-xs font-semibold text-asa-accent hover:bg-asa-accent/10 transition-colors cursor-pointer"
             >
               <LogOut size={14} />
-              Exit Dashboard
+              Sign Out
             </button>
           </>
         )}
         {collapsed && (
           <div className="flex justify-center mt-2">
             <button
-              onClick={() => navigate("/")}
+              onClick={logout}
               className="p-2 rounded-lg text-asa-accent hover:bg-asa-accent/10 transition-colors cursor-pointer"
-              aria-label="Exit Dashboard"
-              title="Exit Dashboard"
+              aria-label="Sign Out"
+              title="Sign Out"
             >
               <LogOut size={14} />
             </button>

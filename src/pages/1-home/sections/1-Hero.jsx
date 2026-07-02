@@ -7,7 +7,7 @@ import AnimatedCounter from "../../../components/ui/AnimatedCounter"
 export default function Hero() {
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-asa-background">
-      {/* Background image — slow Ken Burns drift, the room is never quite still */}
+      {/* Background image — slow Ken Burns drift */}
       <div className="absolute inset-0 overflow-hidden">
         <div
           className="absolute inset-0 animate-ken-burns bg-cover bg-center"
@@ -32,7 +32,7 @@ export default function Hero() {
         }}
       />
 
-      {/* One-time light sweep, like a lens catching a flare on take one */}
+      {/* One-time light sweep */}
       <div className="light-sweep" />
 
       {/* Content */}
@@ -41,7 +41,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="max-w-3xl"
+          className="max-w-4xl mx-auto text-center"
         >
           {/* Eyebrow */}
           <motion.span
@@ -66,7 +66,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-6 max-w-xl text-lg leading-relaxed text-asa-muted sm:text-xl"
+            className="mt-6 max-w-2xl mx-auto text-lg leading-relaxed text-asa-muted sm:text-xl"
           >
             Actor&apos;s Slot Academy is a premier performance training institution
             dedicated to discovering, developing, and showcasing African talent
@@ -78,7 +78,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-10 flex flex-wrap gap-4"
+            className="mt-10 flex flex-wrap gap-4 justify-center"
           >
             <Button to="/auth?mode=signup" size="lg">
               Apply Now <ArrowRight className="h-4 w-4" />

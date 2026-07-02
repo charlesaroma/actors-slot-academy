@@ -1,171 +1,182 @@
+import { useState, useEffect } from "react"
 import { motion } from "motion/react"
-import { Calendar, Video, BookOpen, Clock, AlertCircle, ArrowRight, ArrowUpRight } from "lucide-react"
 import { Link } from "react-router-dom"
-import Button from "../../../components/ui/Button"
+import { Users, Image, CalendarRange, BookOpen, Vote, TrendingUp, UserPlus, Eye } from "lucide-react"
+import { talentDirectory } from "../../../data/talentDirectory"
+import { coursesData } from "../../../data/coursesData"
+import { eventsData } from "../../../data/eventsData"
+
+const statCards = [
+  { label: "Total Talents", icon: Users, color: "bg-blue-500/10 text-blue-400", path: "/dashboard/talents" },
+  { label: "Gallery Items", icon: Image, color: "bg-emerald-500/10 text-emerald-400", path: "/dashboard/gallery" },
+  { label: "Upcoming Events", icon: CalendarRange, color: "bg-amber-500/10 text-amber-400", path: "/dashboard/events" },
+  { label: "Active Programmes", icon: BookOpen, color: "bg-purple-500/10 text-purple-400", path: "/dashboard/programmes" },
+]
 
 export default function OverviewPage() {
-  const stats = [
-    { label: "Active Cohort Progress", value: "Week 12 of 16", icon: Clock },
-    { label: "Showreels Recorded", value: "2 Clips", icon: Video },
-    { label: "Monologues Selected", value: "3 Scripts", icon: BookOpen },
-    { label: "Class Attendance", value: "95%", icon: Calendar },
-  ]
+  const [stats, setStats] = useState({ talents: 0, gallery: 0, events: 0, programmes: 0 })
+  const [recentTalents, setRecentTalents] = useState([])
+  const [upcomingEvents, setUpcomingEvents] = useState([])
 
-  const upcomingClass = {
-    title: "Screen Acting & Camera Techniques",
-    time: "Saturdays, 9:00 AM – 4:00 PM",
-    instructor: "Amina Nantongo",
-    location: "Studio 2 (Main Stage)",
-    deadline: "Showreel recordings start next week.",
-  }
-
-  const castingCalls = [
-    {
-      id: "cc-1",
-      title: "Feature Film: 'Gulu Chronicles'",
-      role: "Lead & Supporting (Ages 18-25)",
-      deadline: "Closes in 2 days",
-      urgency: true,
-    },
-    {
-      id: "cc-2",
-      title: "Commercial: 'MTN Uganda' Campaign",
-      role: "Narrator & Dynamic Extras",
-      deadline: "Closes in 5 days",
-      urgency: false,
-    },
-  ]
+  useEffect(() => {
+    setStats({
+      talents: talentDirectory.length,
+      gallery: 28,
+      events: eventsData.filter(e => e.status !== "completed").length,
+      programmes: coursesData.length,
+    })
+    setRecentTalents(talentDirectory.slice(0, 4))
+    setUpcomingEvents(eventsData.slice(0, 4))
+  }, [])
 
   return (
-    <div className="space-y-10">
-      {/* Welcome Banner */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-6 border-b border-asa-border">
-        <div>
-          <span className="label-mono text-asa-primary text-[10px]">Student Dashboard</span>
-          <h1 className="font-headline text-3xl md:text-4xl font-bold text-asa-text mt-1.5">
-            Welcome Back, Catherine
-          </h1>
-          <p className="text-sm text-asa-muted mt-1">
-            Dry Season Cohort &middot; Screen & Stage Acting Specialty
-          </p>
-        </div>
-        <Button to="/dashboard/profiles" variant="primary" size="md">
-          Edit Casting Profile <ArrowRight className="h-4 w-4" />
-        </Button>
+    <div className="space-y-8">
+      {/* Header */}
+      <div>
+        <h1 className="font-headline text-2xl font-bold text-asa-text">Dashboard</h1>
+        <p className="text-sm text-asa-muted mt-1">Welcome back, Admin. Here&apos;s what&apos;s happening at ASA.</p>
       </div>
 
-      {/* Stats Grid */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {stats.map((stat, i) => {
-          const Icon = stat.icon
+      {/* Quick Stats */}
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {statCards.map((item) => {
+          const count = stats[item.label.toLowerCase().includes("talents") ? "talents" :
+                         item.label.toLowerCase().includes("gallery") ? "gallery" :
+                         item.label.toLowerCase().includes("events") ? "events" : "programmes"]
+          const Icon = item.icon
           return (
             <motion.div
-              key={stat.label}
+              key={item.label}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="card-ticket p-6 flex items-center gap-5"
+              whileHover={{ y: -2 }}
+              transition={{ duration: 0.3 }}
             >
-              <div className="h-12 w-12 rounded-xl bg-asa-primary/10 border border-asa-primary/20 flex items-center justify-center text-asa-primary shrink-0">
-                <Icon className="h-5 w-5" />
-              </div>
-              <div>
-                <p className="label-mono text-[9px] text-asa-muted">{stat.label}</p>
-                <p className="text-xl font-headline font-bold text-asa-text mt-1">{stat.value}</p>
-              </div>
+              <Link
+                to={item.path}
+                className="block rounded-xl border border-asa-border bg-asa-surface p-5 transition-all duration-200 hover:border-asa-primary/30 hover:shadow-[0_0_25px_rgba(201,154,62,0.08)]"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-2xl font-bold text-asa-text font-headline">{count}</p>
+                    <p className="text-xs text-asa-muted mt-1 font-medium">{item.label}</p>
+                  </div>
+                  <div className={`rounded-lg p-3 ${item.color}`}>
+                    <Icon className="h-5 w-5" />
+                  </div>
+                </div>
+              </Link>
             </motion.div>
           )
         })}
       </div>
 
-      {/* Content Layout */}
-      <div className="grid gap-8 lg:grid-cols-3">
-        {/* Upcoming Class & Academy Schedule */}
-        <div className="lg:col-span-2 space-y-6">
-          <div className="card-ticket p-8 bg-asa-surface border-asa-border">
-            <h2 className="font-headline text-2xl font-bold text-asa-text flex items-center gap-3">
-              <Calendar className="h-5 w-5 text-asa-primary" />
-              Next Scheduled Performance Class
-            </h2>
-            <div className="mt-6 space-y-4">
-              <div className="p-5 rounded-xl bg-asa-background border border-asa-border">
-                <span className="label-mono text-asa-primary text-[10px]">Active Topic</span>
-                <h3 className="text-lg font-bold text-asa-text mt-1">{upcomingClass.title}</h3>
-                <div className="grid gap-2 sm:grid-cols-2 text-sm text-asa-muted mt-4 pt-4 border-t border-asa-border/40">
-                  <p>Instructor: <strong className="text-asa-text">{upcomingClass.instructor}</strong></p>
-                  <p>Location: <span className="text-asa-text">{upcomingClass.location}</span></p>
-                  <p>Schedule: <span className="text-asa-text">{upcomingClass.time}</span></p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 p-4 rounded-lg bg-asa-primary/5 border border-asa-primary/10 text-xs text-asa-muted">
-                <AlertCircle className="h-5 w-5 text-asa-primary shrink-0" />
-                <span>{upcomingClass.deadline} Make sure your monologues are memorized and camera-ready.</span>
-              </div>
-            </div>
+      {/* Middle Row */}
+      <div className="grid gap-6 lg:grid-cols-2">
+        {/* Recent Talents */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="rounded-xl border border-asa-border bg-asa-surface p-6"
+        >
+          <div className="flex items-center justify-between mb-5">
+            <h2 className="font-headline text-lg font-bold text-asa-text">Recent Talents</h2>
+            <Link to="/dashboard/talents" className="flex items-center gap-1 text-xs font-semibold text-asa-primary hover:text-asa-primary-bright transition-colors">
+              <Eye className="h-3.5 w-3.5" />
+              View All
+            </Link>
           </div>
+          <div className="space-y-3">
+            {recentTalents.map((talent) => (
+              <div key={talent.id} className="flex items-center gap-3 rounded-lg bg-asa-background p-3">
+                <div className="h-10 w-10 shrink-0 rounded-full bg-asa-border overflow-hidden">
+                  <img src={talent.image} alt={talent.name} className="h-full w-full object-cover" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-bold text-asa-text truncate">{talent.name}</p>
+                  <p className="text-xs text-asa-muted">{talent.category} · Age {talent.age}</p>
+                </div>
+                <span className="label-mono text-[10px] text-asa-primary">{talent.rating}/5</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
 
-          {/* Monologue Lab Progress */}
-          <div className="card-ticket p-8 bg-asa-surface border-asa-border">
-            <h2 className="font-headline text-2xl font-bold text-asa-text flex items-center gap-3">
+        {/* Quick Actions */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="rounded-xl border border-asa-border bg-asa-surface p-6"
+        >
+          <h2 className="font-headline text-lg font-bold text-asa-text mb-5">Quick Actions</h2>
+          <div className="grid grid-cols-2 gap-3">
+            <Link to="/dashboard/talents" className="flex flex-col items-center gap-2 rounded-lg border border-asa-border bg-asa-background p-4 text-center transition-all hover:border-asa-primary/30 hover:bg-asa-primary/5">
+              <UserPlus className="h-5 w-5 text-asa-primary" />
+              <span className="text-xs font-semibold text-asa-text">Add Talent</span>
+            </Link>
+            <Link to="/dashboard/events" className="flex flex-col items-center gap-2 rounded-lg border border-asa-border bg-asa-background p-4 text-center transition-all hover:border-asa-primary/30 hover:bg-asa-primary/5">
+              <CalendarRange className="h-5 w-5 text-asa-primary" />
+              <span className="text-xs font-semibold text-asa-text">New Event</span>
+            </Link>
+            <Link to="/dashboard/programmes" className="flex flex-col items-center gap-2 rounded-lg border border-asa-border bg-asa-background p-4 text-center transition-all hover:border-asa-primary/30 hover:bg-asa-primary/5">
               <BookOpen className="h-5 w-5 text-asa-primary" />
-              Monologue Portfolio Progress
-            </h2>
-            <p className="text-xs text-asa-muted mt-1.5">Track your monologue certification status for final casting directory listing.</p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-4 text-center">
-              {[
-                { step: "1. Selection", status: "Approved", current: true },
-                { step: "2. Rehearsal", status: "Certified", current: true },
-                { step: "3. Recording", status: "Recorded", current: true },
-                { step: "4. Cast Ready", status: "Pending Review", current: false },
-              ].map((item, idx) => (
-                <div key={item.step} className={`p-4 rounded-xl border ${
-                  item.current
-                    ? "bg-asa-primary/5 border-asa-primary/30 text-asa-primary"
-                    : "bg-asa-background border-asa-border text-asa-muted"
-                }`}>
-                  <p className="label-mono text-[8px]">{item.step}</p>
-                  <p className="text-xs font-semibold mt-1.5">{item.status}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-6 text-right">
-              <Link to="/dashboard/monologue-lab" className="text-xs font-bold text-asa-primary hover:text-asa-primary-bright inline-flex items-center gap-1.5">
-                Go to Monologue Lab <ArrowUpRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
+              <span className="text-xs font-semibold text-asa-text">New Programme</span>
+            </Link>
+            <Link to="/dashboard/voting" className="flex flex-col items-center gap-2 rounded-lg border border-asa-border bg-asa-background p-4 text-center transition-all hover:border-asa-primary/30 hover:bg-asa-primary/5">
+              <Vote className="h-5 w-5 text-asa-primary" />
+              <span className="text-xs font-semibold text-asa-text">Open Voting</span>
+            </Link>
           </div>
-        </div>
-
-        {/* Casting Board & Announcements */}
-        <div className="space-y-6">
-          <div className="card-ticket p-8 bg-asa-surface border-asa-border">
-            <h2 className="font-headline text-2xl font-bold text-asa-text flex items-center gap-3">
-              Casting Board
-            </h2>
-            <p className="text-xs text-asa-muted mt-1">Direct auditions for verified student performers.</p>
-
-            <div className="mt-6 space-y-4">
-              {castingCalls.map((call) => (
-                <div key={call.id} className="p-4 rounded-xl bg-asa-background border border-asa-border flex flex-col justify-between gap-3">
-                  <div>
-                    <h4 className="text-sm font-bold text-asa-text">{call.title}</h4>
-                    <p className="text-xs text-asa-muted mt-1">{call.role}</p>
-                  </div>
-                  <div className="flex justify-between items-center text-[10px] pt-3 border-t border-asa-border/40">
-                    <span className={`font-semibold ${call.urgency ? "text-asa-accent" : "text-asa-primary"}`}>
-                      {call.deadline}
-                    </span>
-                    <Link to="/dashboard/profiles" className="text-asa-primary hover:underline font-semibold">
-                      Apply Portfolio
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        </motion.div>
       </div>
+
+      {/* Upcoming Events */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0.3 }}
+        className="rounded-xl border border-asa-border bg-asa-surface p-6"
+      >
+        <div className="flex items-center justify-between mb-5">
+          <h2 className="font-headline text-lg font-bold text-asa-text">Upcoming Events</h2>
+          <Link to="/dashboard/events" className="flex items-center gap-1 text-xs font-semibold text-asa-primary hover:text-asa-primary-bright transition-colors">
+            <Eye className="h-3.5 w-3.5" />
+            View All
+          </Link>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-sm">
+            <thead>
+              <tr className="text-xs text-asa-muted border-b border-asa-border">
+                <th className="pb-3 font-semibold">Event</th>
+                <th className="pb-3 font-semibold">Date</th>
+                <th className="pb-3 font-semibold">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {upcomingEvents.map((event) => (
+                <tr key={event.id} className="border-b border-asa-border/50 last:border-0">
+                  <td className="py-3 text-sm font-medium text-asa-text">{event.title}</td>
+                  <td className="py-3 text-sm text-asa-muted">{event.date}</td>
+                  <td className="py-3">
+                    <span className={`label-mono text-[10px] px-2 py-0.5 rounded-full ${
+                      event.status === "upcoming"
+                        ? "bg-emerald-500/10 text-emerald-400"
+                        : event.status === "ongoing"
+                        ? "bg-amber-500/10 text-amber-400"
+                        : "bg-asa-border text-asa-muted"
+                    }`}>
+                      {event.status}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </motion.div>
     </div>
   )
 }

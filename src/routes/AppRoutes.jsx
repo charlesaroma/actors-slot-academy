@@ -1,51 +1,76 @@
-import { Routes, Route } from "react-router-dom"
-import Layout from "../components/layout/Layout"
+import { Routes, Route, Navigate } from "react-router-dom"
+import { useAuth } from "../contexts/AuthContext"
+import ProtectedRoute from "../components/auth/ProtectedRoute"
+import MainLayout from "../components/layout/MainLayout"
 import DashboardLayout from "../dashboard/components/DashboardLayout"
-
 import HomePage from "../pages/1-home/HomePage"
 import AboutPage from "../pages/2-about/AboutPage"
-import SchoolsOutreachPage from "../pages/3-schools-outreach/SchoolsOutreachPage"
-import TalentPage from "../pages/4-talent-showcase/TalentPage"
-import DynamicTalentProfile from "../pages/4-talent-showcase/DynamicTalentProfile"
-import GalleryPage from "../pages/5-gallery/GalleryPage"
-import EventsPage from "../pages/6-events-workshops/EventsPage"
-import ContactPage from "../pages/7-contact/ContactPage"
-import ProgrammesPage from "../pages/8-programmes/ProgrammesPage"
+import OutreachPage from "../pages/3-schools-outreach/OutreachPage"
+import TalentsPagePublic from "../pages/4-talents/TalentsPage"
+import GalleryPagePublic from "../pages/5-gallery/GalleryPage"
+import EventsPagePublic from "../pages/6-events/EventsPage"
+import ProgrammesPagePublic from "../pages/7-programmes/ProgrammesPage"
+import ContactPage from "../pages/8-contact/ContactPage"
 import AuthPage from "../pages/0-auth/AuthPage"
-import NotFoundPage from "../pages/9-not-found/NotFoundPage"
-
+// Dashboard Pages
 import OverviewPage from "../dashboard/pages/1-overview/OverviewPage"
-import ProfilesManagerPage from "../dashboard/pages/2-profiles-manager/ProfilesManagerPage"
-import MediaVaultPage from "../dashboard/pages/3-media-vault/MediaVaultPage"
-import MonologueLabPage from "../dashboard/pages/4-monologue-lab/MonologueLabPage"
+import TalentsPage from "../dashboard/pages/2-talents/TalentsPage"
+import GalleryPage from "../dashboard/pages/3-gallery/GalleryPage"
+import EventsPage from "../dashboard/pages/4-events/EventsPage"
+import ProgrammesPage from "../dashboard/pages/5-programmes/ProgrammesPage"
+import VotingPage from "../dashboard/pages/6-voting/VotingPage"
 import SettingsPage from "../dashboard/pages/settings/SettingsPage"
+import LoginPage from "../dashboard/pages/0-login/LoginPage"
 
 export default function AppRoutes() {
+  const { isAuthenticated } = useAuth()
+
   return (
     <Routes>
-      {/* Public Pages with Navigation Header & Footer */}
-      <Route element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="about" element={<AboutPage />} />
-        <Route path="schools-outreach" element={<SchoolsOutreachPage />} />
-        <Route path="talents" element={<TalentPage />} />
-        <Route path="talents/:id" element={<DynamicTalentProfile />} />
-        <Route path="gallery" element={<GalleryPage />} />
-        <Route path="events" element={<EventsPage />} />
-        <Route path="programmes" element={<ProgrammesPage />} />
-        <Route path="contact" element={<ContactPage />} />
-        <Route path="auth/*" element={<AuthPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+      {/* Public routes */}
+      <Route element={<MainLayout />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/schools-outreach" element={<OutreachPage />} />
+        <Route path="/talents" element={<TalentsPagePublic />} />
+        <Route path="/gallery" element={<GalleryPagePublic />} />
+        <Route path="/events" element={<EventsPagePublic />} />
+        <Route path="/programmes" element={<ProgrammesPagePublic />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/auth" element={<AuthPage />} />
+        <Route path="/auth/login" element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <AuthPage />} />
       </Route>
 
-      {/* Dashboard Subsystem with Sidebar Shell */}
-      <Route element={<DashboardLayout />}>
-        <Route path="dashboard" element={<OverviewPage />} />
-        <Route path="dashboard/profiles" element={<ProfilesManagerPage />} />
-        <Route path="dashboard/media-vault" element={<MediaVaultPage />} />
-        <Route path="dashboard/monologue-lab" element={<MonologueLabPage />} />
-        <Route path="dashboard/settings" element={<SettingsPage />} />
+      {/* Auth route (standalone for login) */}
+      <Route path="/dashboard/login" element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <LoginPage />} />
+
+      {/* Protected dashboard routes */}
+      <Route
+        element={
+          <ProtectedRoute>
+            <DashboardLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route path="/dashboard" element={<OverviewPage />} />
+        <Route path="/dashboard/talents" element={<TalentsPage />} />
+        <Route path="/dashboard/gallery" element={<GalleryPage />} />
+        <Route path="/dashboard/events" element={<EventsPage />} />
+        <Route path="/dashboard/programmes" element={<ProgrammesPage />} />
+        <Route path="/dashboard/voting" element={<VotingPage />} />
+        <Route path="/dashboard/settings" element={<SettingsPage />} />
       </Route>
+
+      {/* 404 */}
+      <Route path="*" element={
+        <div className="flex min-h-screen items-center justify-center bg-asa-background">
+          <div className="text-center">
+            <h1 className="font-headline text-6xl font-bold text-asa-primary">404</h1>
+            <p className="mt-4 text-asa-muted">Page not found</p>
+            <a href="/" className="mt-6 inline-block rounded-lg bg-asa-primary px-6 py-3 text-sm font-semibold text-asa-background">Go Home</a>
+          </div>
+        </div>
+      } />
     </Routes>
   )
 }

@@ -12,17 +12,20 @@ const titles = {
   "/contact": "Contact",
   "/auth": "Sign In",
   "/dashboard": "Dashboard",
-  "/dashboard/profiles": "Profiles",
-  "/dashboard/media-vault": "Media Vault",
-  "/dashboard/monologue-lab": "Monologue Lab",
-  "/dashboard/settings": "Settings",
+  "/dashboard/talents": "Talents — Dashboard",
+  "/dashboard/gallery": "Gallery — Dashboard",
+  "/dashboard/events": "Events — Dashboard",
+  "/dashboard/programmes": "Programmes — Dashboard",
+  "/dashboard/voting": "Voting — Dashboard",
+  "/dashboard/settings": "Settings — Dashboard",
+  "/dashboard/login": "Admin Login",
 }
 
 export default function DynamicTitle() {
   const { pathname } = useLocation()
 
   useEffect(() => {
-    document.title = titles[pathname] || `${base} — Page`
+    document.title = titles[pathname] || `Actors Slot Academy — Page`
   }, [pathname])
 
   return null

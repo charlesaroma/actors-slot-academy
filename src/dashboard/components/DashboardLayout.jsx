@@ -1,14 +1,17 @@
 import { useState } from "react"
 import { Outlet, NavLink, Link, useNavigate, useLocation } from "react-router-dom"
 import { motion, AnimatePresence } from "motion/react"
-import { LayoutDashboard, UserSquare2, FolderHeart, FileAudio, Settings, LogOut, Menu, X } from "lucide-react"
+import { LayoutDashboard, Users, Image, CalendarRange, BookOpen, Vote, Settings, LogOut, Menu, X } from "lucide-react"
 import Sidebar from "./Sidebar"
+import { useAuth } from "../../contexts/AuthContext"
 
 const sidebarLinks = [
   { name: "Overview", path: "/dashboard", icon: LayoutDashboard },
-  { name: "Casting Profile", path: "/dashboard/profiles", icon: UserSquare2 },
-  { name: "Media Vault", path: "/dashboard/media-vault", icon: FolderHeart },
-  { name: "Monologue Lab", path: "/dashboard/monologue-lab", icon: FileAudio },
+  { name: "Talents", path: "/dashboard/talents", icon: Users },
+  { name: "Gallery", path: "/dashboard/gallery", icon: Image },
+  { name: "Events", path: "/dashboard/events", icon: CalendarRange },
+  { name: "Programmes", path: "/dashboard/programmes", icon: BookOpen },
+  { name: "Voting", path: "/dashboard/voting", icon: Vote },
   { name: "Settings", path: "/dashboard/settings", icon: Settings },
 ]
 
@@ -17,6 +20,7 @@ export default function DashboardLayout() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const navigate = useNavigate()
   const location = useLocation()
+  const { logout } = useAuth()
 
   const currentLink = sidebarLinks.find((link) => link.path === location.pathname) ?? sidebarLinks[0]
 
@@ -29,7 +33,7 @@ export default function DashboardLayout() {
         opacity: 0.025,
       }} />
 
-      {/* Desktop Sidebar (fixed, no scroll) */}
+      {/* Desktop Sidebar */}
       <div className="hidden md:block">
         <Sidebar collapsed={sidebarCollapsed} onToggle={() => setSidebarCollapsed(!sidebarCollapsed)} />
       </div>
@@ -38,7 +42,7 @@ export default function DashboardLayout() {
       <header className="md:hidden flex h-16 items-center justify-between px-4 bg-asa-surface border-b border-asa-border fixed top-0 left-0 right-0 z-50">
         <Link to="/" className="flex items-center gap-2">
           <span className="font-headline text-xl font-bold text-asa-primary">ASA</span>
-          <span className="label-mono text-[8px] text-asa-muted">Student</span>
+          <span className="label-mono text-[8px] text-asa-muted">Admin</span>
         </Link>
         <div className="flex items-center gap-3">
           <span className="text-xs font-semibold text-asa-muted">{currentLink.name}</span>
@@ -85,11 +89,11 @@ export default function DashboardLayout() {
                 )
               })}
               <button
-                onClick={() => { setMobileOpen(false); navigate("/") }}
+                onClick={() => { setMobileOpen(false); logout() }}
                 className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-semibold text-asa-accent hover:bg-asa-accent/10 transition-colors cursor-pointer mt-3 border-t border-asa-border pt-4"
               >
                 <LogOut className="h-4 w-4" />
-                Exit Dashboard
+                Sign Out
               </button>
             </nav>
           </motion.div>
