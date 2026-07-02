@@ -1,7 +1,7 @@
 import { motion } from "motion/react"
 import { ArrowRight, Play } from "lucide-react"
 import Button from "../../../components/ui/Button"
-import ViewfinderFrame from "../../../components/ui/ViewfinderFrame"
+
 
 export default function Hero() {
   return (
@@ -33,9 +33,6 @@ export default function Hero() {
 
       {/* One-time light sweep, like a lens catching a flare on take one */}
       <div className="light-sweep" />
-
-      {/* Director's viewfinder chrome — the page's signature */}
-      <ViewfinderFrame rollLabel="KLA. 2026" />
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-36 sm:px-6 lg:px-8">
