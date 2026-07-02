@@ -49,7 +49,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="label-mono inline-flex items-center gap-2 text-asa-primary"
           >
-            <span className="h-px w-6 bg-asa-primary" />
+            
             Now Casting · Applications Open
           </motion.span>
 
