@@ -42,7 +42,6 @@
 html {
   scroll-behavior: smooth;
 }
-
 body {
   background-color: var(--asa-ink);
   color: var(--asa-spotlight);
@@ -96,6 +95,42 @@ body::before {
   opacity: 1;
 }
 
+/* ── True admit-one perforation notches (adds to .card-ticket) ──
+   Circle color must match the section background the card sits in,
+   so pass `--notch-bg` inline if a card sits on a non-default surface. */
+.card-ticket--perforated {
+  overflow: visible;
+}
+.card-ticket--perforated::after,
+.card-ticket--perforated--left::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  background: var(--notch-bg, var(--asa-surface));
+  border: 1px solid var(--asa-ink-border);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+.card-ticket--perforated::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -9px;
+  width: 18px;
+  height: 18px;
+  background: var(--notch-bg, var(--asa-surface));
+  border: 1px solid var(--asa-ink-border);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+.card-ticket--perforated::after {
+  right: -9px;
+}
+
 /* ── Call-sheet mono label utility ── */
 .label-mono {
   font-family: var(--font-mono);
@@ -103,6 +138,64 @@ body::before {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--asa-ash);
+}
+
+/* ── Director's viewfinder corner brackets ──
+   The homepage signature: frames key moments like footage on a
+   camera monitor. Place inside a `relative` positioned ancestor. */
+.viewfinder-corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: var(--asa-marquee);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.viewfinder-corner.tl { top: 28px; left: 28px; border-top: 1.5px solid; border-left: 1.5px solid; }
+.viewfinder-corner.tr { top: 28px; right: 28px; border-top: 1.5px solid; border-right: 1.5px solid; }
+.viewfinder-corner.bl { bottom: 28px; left: 28px; border-bottom: 1.5px solid; border-left: 1.5px solid; }
+.viewfinder-corner.br { bottom: 28px; right: 28px; border-bottom: 1.5px solid; border-right: 1.5px solid; }
+
+/* ── Slow Ken Burns drift for hero/background imagery ── */
+@keyframes ken-burns {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.09); }
+}
+.animate-ken-burns {
+  animation: ken-burns 26s ease-out forwards;
+}
+
+/* ── One-time light sweep on load, like a lens catching a flare ── */
+@keyframes light-sweep {
+  0%   { transform: translateX(-120%) skewX(-15deg); opacity: 0; }
+  15%  { opacity: 0.5; }
+  50%  { opacity: 0.3; }
+  100% { transform: translateX(220%) skewX(-15deg); opacity: 0; }
+}
+.light-sweep {
+  position: absolute;
+  inset: -20% -10%;
+  background: linear-gradient(90deg, transparent, rgba(228,184,92,0.12) 45%, rgba(228,184,92,0.22) 50%, rgba(228,184,92,0.12) 55%, transparent);
+  animation: light-sweep 2.8s ease-in-out 0.4s 1 both;
+  pointer-events: none;
+}
+
+/* ── Film-strip perforation divider between sections ── */
+.filmstrip-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.filmstrip-divider span {
+  width: 4px;
+  height: 4px;
+  border-radius: 1px;
+  background: var(--asa-ink-border);
+}
+.filmstrip-divider.is-lit span:nth-child(odd) {
+  background: var(--asa-marquee);
+  opacity: 0.45;
 }
 
 /* ── Reduce motion respect ── */

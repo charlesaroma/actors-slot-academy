@@ -13,7 +13,6 @@ export default function CorePillars() {
             "radial-gradient(ellipse 80% 50% at 50% 100%, rgba(201,154,62,0.04) 0%, transparent 70%)",
         }}
       />
-
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
           label="Our Pillars"
@@ -22,7 +21,13 @@ export default function CorePillars() {
           center
         />
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="filmstrip-divider is-lit mt-14">
+          {Array.from({ length: 24 }).map((_, i) => (
+            <span key={i} />
+          ))}
+        </div>
+
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {CORE_VALUES.map((pillar, i) => (
             <motion.div
               key={pillar.title}
@@ -32,14 +37,13 @@ export default function CorePillars() {
               transition={{ duration: 0.6, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="card-ticket group p-8"
             >
-              {/* Gold corner accent */}
+              {/* Scene slate label — reads like a shot log, not a decorative counter */}
               <div className="mb-6 flex items-center gap-3">
                 <div className="h-px flex-1 bg-asa-border" />
                 <span className="label-mono text-asa-primary text-[9px]">
-                  0{i + 1}
+                  Scene {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
-
               <h3 className="font-headline text-xl font-bold text-asa-text group-hover:text-asa-primary transition-colors duration-250">
                 {pillar.title}
               </h3>

@@ -37,7 +37,6 @@ export default function UpcomingIntakes() {
           {INTAKES.map((intake, i) => {
             const status = statusConfig[intake.status] ?? statusConfig.closed
             const isOpen = intake.status === "open"
-
             return (
               <motion.div
                 key={intake.id}
@@ -45,12 +44,13 @@ export default function UpcomingIntakes() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.6, delay: i * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className={`card-ticket p-8 ${isOpen ? "glow-gold" : ""}`}
+                className={`card-ticket card-ticket--perforated p-8 ${isOpen ? "glow-gold" : ""}`}
               >
-                {/* Header */}
+                {/* Ticket header */}
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <h3 className="font-headline text-lg font-bold text-asa-text">
+                    <p className="label-mono text-asa-primary/60">Admit One</p>
+                    <h3 className="mt-1 font-headline text-lg font-bold text-asa-text">
                       {intake.label}
                     </h3>
                     <p className="mt-1 label-mono">{intake.season}</p>
@@ -60,8 +60,14 @@ export default function UpcomingIntakes() {
                   </span>
                 </div>
 
-                {/* Divider */}
-                <div className="my-6 h-px bg-asa-border" />
+                {/* Perforated tear line */}
+                <div
+                  className="my-6 h-px"
+                  style={{
+                    backgroundImage:
+                      "repeating-linear-gradient(90deg, var(--asa-ink-border) 0 6px, transparent 6px 12px)",
+                  }}
+                />
 
                 {/* Meta */}
                 <div className="space-y-2.5 text-sm text-asa-muted">

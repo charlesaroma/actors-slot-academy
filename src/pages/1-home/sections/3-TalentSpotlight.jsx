@@ -6,19 +6,23 @@ import Button from "../../../components/ui/Button"
 
 export default function TalentSpotlight() {
   const featured = TALENTS.slice(0, 3)
-
   return (
     <section className="relative bg-asa-surface py-28 overflow-hidden">
       {/* Subtle horizontal rule top */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-asa-primary/30 to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          label="Meet Our Talents"
-          title="Spotlight Performers"
-          description="Exceptional artists trained at ASA, ready for their next role."
-          center
-        />
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <SectionHeader
+            label="Meet Our Talents"
+            title="Spotlight Performers"
+            description="Exceptional artists trained at ASA, ready for their next role."
+          />
+          <span className="label-mono hidden items-center gap-2 text-asa-primary/70 sm:flex">
+            <span className="h-1.5 w-1.5 rounded-full bg-asa-primary animate-pulse" />
+            Now Showing
+          </span>
+        </div>
 
         <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((talent, i) => (

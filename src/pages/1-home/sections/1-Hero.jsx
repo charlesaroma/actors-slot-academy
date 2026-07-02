@@ -1,19 +1,22 @@
 import { motion } from "motion/react"
 import { ArrowRight, Play } from "lucide-react"
 import Button from "../../../components/ui/Button"
+import ViewfinderFrame from "../../../components/ui/ViewfinderFrame"
 
 export default function Hero() {
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-asa-background">
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1558970439-add78fc68990?w=1920&q=80')",
-          opacity: 0.22,
-        }}
-      />
+      {/* Background image — slow Ken Burns drift, the room is never quite still */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div
+          className="absolute inset-0 animate-ken-burns bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1558970439-add78fc68990?w=1920&q=80')",
+            opacity: 0.22,
+          }}
+        />
+      </div>
 
       {/* Cinematic gradient overlays */}
       <div className="absolute inset-0 bg-gradient-to-r from-asa-background via-asa-background/85 to-asa-background/30" />
@@ -27,6 +30,12 @@ export default function Hero() {
             "radial-gradient(ellipse 70% 60% at 30% 50%, rgba(201,154,62,0.06) 0%, transparent 70%)",
         }}
       />
+
+      {/* One-time light sweep, like a lens catching a flare on take one */}
+      <div className="light-sweep" />
+
+      {/* Director's viewfinder chrome — the page's signature */}
+      <ViewfinderFrame rollLabel="KLA. 2026" />
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-36 sm:px-6 lg:px-8">
@@ -44,14 +53,14 @@ export default function Hero() {
             className="label-mono inline-flex items-center gap-2 text-asa-primary"
           >
             <span className="h-px w-6 bg-asa-primary" />
-            Est. 2024 · Kampala, Uganda
+            Now Casting · Applications Open
           </motion.span>
 
           {/* Headline */}
-          <h1 className="mt-6 font-headline text-5xl font-bold leading-[1.1] tracking-tight text-asa-text sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 font-headline text-5xl font-bold leading-[1.05] tracking-tight text-asa-text sm:text-6xl lg:text-7xl">
             Where African
             <br />
-            <span className="text-asa-primary">Talent Comes Alive</span>
+            <span className="italic text-asa-primary">Talent Comes Alive</span>
           </h1>
 
           {/* Sub */}
