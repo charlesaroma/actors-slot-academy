@@ -1,6 +1,7 @@
 import { motion } from "motion/react"
 import { ArrowRight, Play } from "lucide-react"
 import Button from "../../../components/ui/Button"
+import AnimatedCounter from "../../../components/ui/AnimatedCounter"
 
 
 export default function Hero() {
@@ -98,23 +99,9 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.9 }}
             className="mt-20 grid grid-cols-3 gap-8 border-t border-asa-border pt-8"
           >
-            {[
-              { label: "Talents Trained", value: "200+" },
-              { label: "Placement Rate", value: "85%" },
-              { label: "Workshops Run", value: "48+" },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.0 + i * 0.1 }}
-              >
-                <p className="font-headline text-2xl font-bold text-asa-primary sm:text-3xl">
-                  {stat.value}
-                </p>
-                <p className="mt-1 label-mono">{stat.label}</p>
-              </motion.div>
-            ))}
+            <AnimatedCounter target={200} suffix="+" label="Talents Trained" />
+            <AnimatedCounter target={85} suffix="%" label="Placement Rate" />
+            <AnimatedCounter target={48} suffix="+" label="Workshops Run" />
           </motion.div>
         </motion.div>
       </div>
