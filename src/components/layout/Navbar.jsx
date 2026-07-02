@@ -17,6 +17,15 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+    return () => { document.body.style.overflow = "" }
+  }, [mobileOpen])
+
   const closeMobile = () => {
     setMobileOpen(false)
     setMobileExpanded(null)
@@ -143,7 +152,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 top-18 z-40 bg-asa-background/97 backdrop-blur-xl md:hidden overflow-y-auto"
+            className="fixed inset-0 top-18 z-40 bg-asa-background/97 backdrop-blur-xl md:hidden h-dvh"
             onClick={() => setMobileOpen(false)}
           >
             <nav
