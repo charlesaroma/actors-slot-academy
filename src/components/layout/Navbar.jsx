@@ -135,51 +135,67 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu — Fullscreen Overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden border-t border-asa-border bg-asa-surface/95 backdrop-blur-md md:hidden"
+            className="fixed inset-0 top-18 z-40 bg-asa-background/97 backdrop-blur-xl md:hidden overflow-y-auto"
+            onClick={() => setMobileOpen(false)}
           >
-            <nav className="flex flex-col gap-1 px-4 pb-6 pt-4">
+            <nav
+              className="flex flex-col gap-1 px-6 pb-12 pt-8"
+              onClick={(e) => e.stopPropagation()}
+            >
               {NAV_LINKS.map((item) =>
                 item.path ? (
-                  <NavLink
+                  <motion.div
                     key={item.path}
-                    to={item.path}
-                    end={item.path === "/"}
-                    onClick={closeMobile}
-                    className={({ isActive }) =>
-                      `rounded-lg px-3 py-2.5 text-sm font-medium transition-colors duration-150 cursor-pointer ${
-                        isActive
-                          ? "bg-asa-primary/10 text-asa-primary"
-                          : "text-asa-muted hover:bg-asa-border hover:text-asa-text"
-                      }`
-                    }
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.25 }}
                   >
-                    {item.name}
-                  </NavLink>
-                ) : (
-                  <div key={item.name}>
-                    <button
-                      onClick={() =>
-                        setMobileExpanded(
-                          mobileExpanded === item.name ? null : item.name,
-                        )
+                    <NavLink
+                      to={item.path}
+                      end={item.path === "/"}
+                      onClick={closeMobile}
+                      className={({ isActive }) =>
+                        `block rounded-lg px-3 py-3 text-base font-medium transition-colors duration-150 cursor-pointer ${
+                          isActive
+                            ? "bg-asa-primary/10 text-asa-primary"
+                            : "text-asa-muted hover:bg-asa-border hover:text-asa-text"
+                        }`
                       }
-                      className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-asa-muted transition-colors hover:bg-asa-border hover:text-asa-text cursor-pointer"
                     >
                       {item.name}
-                      <ChevronDown
-                        className={`h-3.5 w-3.5 transition-transform duration-200 ${
-                          mobileExpanded === item.name ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
+                    </NavLink>
+                  </motion.div>
+                ) : (
+                  <div key={item.name}>
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.25 }}
+                    >
+                      <button
+                        onClick={() =>
+                          setMobileExpanded(
+                            mobileExpanded === item.name ? null : item.name,
+                          )
+                        }
+                        className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-base font-medium text-asa-muted transition-colors hover:bg-asa-border hover:text-asa-text cursor-pointer"
+                      >
+                        {item.name}
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform duration-200 ${
+                            mobileExpanded === item.name ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                    </motion.div>
                     <AnimatePresence>
                       {mobileExpanded === item.name && (
                         <motion.div
@@ -195,7 +211,7 @@ export default function Navbar() {
                                 to={sub.path}
                                 onClick={closeMobile}
                                 className={({ isActive }) =>
-                                  `rounded-lg px-3 py-2 text-sm transition-colors cursor-pointer ${
+                                  `block rounded-lg px-3 py-2.5 text-sm transition-colors cursor-pointer ${
                                     isActive
                                       ? "text-asa-primary"
                                       : "text-asa-muted hover:text-asa-text"
@@ -212,13 +228,20 @@ export default function Navbar() {
                   </div>
                 ),
               )}
-              <Link
-                to="/auth/login"
-                onClick={closeMobile}
-                className="mt-3 rounded-lg bg-asa-primary px-3 py-2.5 text-center text-sm font-semibold text-asa-background"
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.25, delay: 0.15 }}
+                className="mt-6"
               >
-                Sign In
-              </Link>
+                <Link
+                  to="/auth/login"
+                  onClick={closeMobile}
+                  className="block rounded-lg bg-asa-primary px-3 py-3 text-center text-base font-semibold text-asa-background"
+                >
+                  Sign In
+                </Link>
+              </motion.div>
             </nav>
           </motion.div>
         )}
