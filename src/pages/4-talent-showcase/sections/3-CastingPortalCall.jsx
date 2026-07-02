@@ -24,7 +24,7 @@ export default function CastingPortalCall() {
             submit casting briefs directly through our casting portal.
           </p>
           <Button
-            to="/auth?mode=signup"
+            to="/apply"
             size="lg"
             className="mt-8 inline-flex items-center gap-2"
           >

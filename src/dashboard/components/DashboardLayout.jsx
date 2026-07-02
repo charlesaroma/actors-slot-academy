@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Outlet, NavLink, Link, useNavigate, useLocation } from "react-router-dom"
 import { motion, AnimatePresence } from "motion/react"
-import { LayoutDashboard, Users, Image, CalendarRange, BookOpen, Vote, Settings, LogOut, Menu, X } from "lucide-react"
+import { LayoutDashboard, Users, Image, CalendarRange, BookOpen, Vote, Settings, LogOut, Menu, X, FileText } from "lucide-react"
 import Sidebar from "./Sidebar"
 import { useAuth } from "../../contexts/AuthContext"
 
@@ -11,6 +11,7 @@ const sidebarLinks = [
   { name: "Gallery", path: "/dashboard/gallery", icon: Image },
   { name: "Events", path: "/dashboard/events", icon: CalendarRange },
   { name: "Programmes", path: "/dashboard/programmes", icon: BookOpen },
+  { name: "Applications", path: "/dashboard/applications", icon: FileText },
   { name: "Voting", path: "/dashboard/voting", icon: Vote },
   { name: "Settings", path: "/dashboard/settings", icon: Settings },
 ]

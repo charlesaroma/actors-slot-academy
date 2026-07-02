@@ -1,4 +1,4 @@
-export const TALENTS = [
+const TALENTS_DATA = [
   {
     id: "catherine-nantongo",
     name: "Catherine Nantongo",
@@ -144,3 +144,6 @@ export const TALENTS = [
     ],
   },
 ]
+
+export const TALENTS = TALENTS_DATA
+export const talentDirectory = TALENTS_DATA

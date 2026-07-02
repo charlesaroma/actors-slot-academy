@@ -1,29 +1,34 @@
 import { useState, useEffect } from "react"
 import { motion } from "motion/react"
 import { Link } from "react-router-dom"
-import { Users, Image, CalendarRange, BookOpen, Vote, TrendingUp, UserPlus, Eye } from "lucide-react"
+import { Users, Image, CalendarRange, BookOpen, Vote, TrendingUp, UserPlus, Eye, FileText } from "lucide-react"
 import { talentDirectory } from "../../../data/talentDirectory"
-import { coursesData } from "../../../data/coursesData"
+import { PROGRAMMES } from "../../../data/coursesData"
 import { eventsData } from "../../../data/eventsData"
+import { getApplications } from "../../../data/applicationData"
 
 const statCards = [
   { label: "Total Talents", icon: Users, color: "bg-blue-500/10 text-blue-400", path: "/dashboard/talents" },
   { label: "Gallery Items", icon: Image, color: "bg-emerald-500/10 text-emerald-400", path: "/dashboard/gallery" },
   { label: "Upcoming Events", icon: CalendarRange, color: "bg-amber-500/10 text-amber-400", path: "/dashboard/events" },
   { label: "Active Programmes", icon: BookOpen, color: "bg-purple-500/10 text-purple-400", path: "/dashboard/programmes" },
+  { label: "Applications", icon: FileText, color: "bg-rose-500/10 text-rose-400", path: "/dashboard/applications" },
 ]
 
 export default function OverviewPage() {
-  const [stats, setStats] = useState({ talents: 0, gallery: 0, events: 0, programmes: 0 })
+  const [stats, setStats] = useState({ talents: 0, gallery: 0, events: 0, programmes: 0, applications: 0, pendingApps: 0 })
   const [recentTalents, setRecentTalents] = useState([])
   const [upcomingEvents, setUpcomingEvents] = useState([])
 
   useEffect(() => {
+    const apps = getApplications()
     setStats({
       talents: talentDirectory.length,
       gallery: 28,
       events: eventsData.filter(e => e.status !== "completed").length,
-      programmes: coursesData.length,
+      programmes: PROGRAMMES.length,
+      applications: apps.length,
+      pendingApps: apps.filter(a => a.status === "pending").length,
     })
     setRecentTalents(talentDirectory.slice(0, 4))
     setUpcomingEvents(eventsData.slice(0, 4))
@@ -38,11 +43,14 @@ export default function OverviewPage() {
       </div>
 
       {/* Quick Stats */}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {statCards.map((item) => {
-          const count = stats[item.label.toLowerCase().includes("talents") ? "talents" :
-                         item.label.toLowerCase().includes("gallery") ? "gallery" :
-                         item.label.toLowerCase().includes("events") ? "events" : "programmes"]
+          const key = item.label.toLowerCase().includes("talents") ? "talents" :
+                      item.label.toLowerCase().includes("gallery") ? "gallery" :
+                      item.label.toLowerCase().includes("events") ? "events" :
+                      item.label.toLowerCase().includes("programmes") ? "programmes" :
+                      item.label.toLowerCase().includes("application") ? "applications" : "programmes"
+          const count = stats[key]
           const Icon = item.icon
           return (
             <motion.div

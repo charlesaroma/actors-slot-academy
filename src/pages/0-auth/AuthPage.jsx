@@ -3,8 +3,10 @@ import { useSearchParams, useNavigate } from "react-router-dom"
 import { motion, AnimatePresence } from "motion/react"
 import { Lock, Mail, User, Eye, EyeOff, Film } from "lucide-react"
 import Button from "../../components/ui/Button"
+import { useAuth } from "../../contexts/AuthContext"
 
 export default function AuthPage() {
+  const { login } = useAuth()
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
   const modeParam = searchParams.get("mode")
@@ -13,6 +15,7 @@ export default function AuthPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [form, setForm] = useState({ name: "", email: "", password: "" })
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
 
   useEffect(() => {
     setIsLogin(modeParam !== "signup")
@@ -22,14 +25,17 @@ export default function AuthPage() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    setError("")
     setLoading(true)
-    // Simulate API delay
-    setTimeout(() => {
-      setLoading(false)
+    const res = await login(form.email, form.password)
+    setLoading(false)
+    if (res.ok) {
       navigate("/dashboard")
-    }, 1200)
+    } else {
+      setError(res.error)
+    }
   }
 
   return (
@@ -146,7 +152,11 @@ export default function AuthPage() {
               </div>
             </div>
 
-            <Button type="submit" size="md" className="w-full mt-4" disabled={loading}>
+            {error && (
+              <p className="text-xs text-red-500 bg-red-500/10 rounded-lg px-3 py-2">{error}</p>
+            )}
+
+            <Button type="submit" size="md" className="w-full" disabled={loading}>
               {loading ? "Accessing Stage..." : isLogin ? "Enter Stage" : "Claim Performer Slot"}
             </Button>
           </form>

@@ -1,5 +1,5 @@
 import { NavLink, Link, useNavigate } from "react-router-dom"
-import { ChevronLeft, ChevronRight, LayoutDashboard, Users, Image, CalendarRange, BookOpen, Vote, Settings, LogOut } from "lucide-react"
+import { ChevronLeft, ChevronRight, LayoutDashboard, Users, Image, CalendarRange, BookOpen, Vote, Settings, LogOut, FileText } from "lucide-react"
 import { useAuth } from "../../contexts/AuthContext"
 
 const links = [
@@ -8,6 +8,7 @@ const links = [
   { name: "Gallery", path: "/dashboard/gallery", icon: Image },
   { name: "Events", path: "/dashboard/events", icon: CalendarRange },
   { name: "Programmes", path: "/dashboard/programmes", icon: BookOpen },
+  { name: "Applications", path: "/dashboard/applications", icon: FileText },
   { name: "Voting", path: "/dashboard/voting", icon: Vote },
   { name: "Settings", path: "/dashboard/settings", icon: Settings },
 ]
@@ -19,7 +20,7 @@ export default function Sidebar({ collapsed, onToggle }) {
   return (
     <aside className={`fixed top-0 left-0 h-screen bg-asa-surface border-r border-asa-border z-50 flex flex-col transition-all duration-300 ease-in-out ${
       collapsed ? "w-16" : "w-64"
-    }`}>
+    } relative`}>
       {/* Logo */}
       <div className={`flex items-center h-16 shrink-0 border-b border-asa-border px-4 ${collapsed ? "justify-center" : "justify-between"}`}>
         <Link to="/" className={`flex items-center group ${collapsed ? "justify-center w-full" : "gap-3"}`}>
@@ -32,21 +33,16 @@ export default function Sidebar({ collapsed, onToggle }) {
             </div>
           )}
         </Link>
-        {!collapsed && (
-          <button onClick={onToggle} className="p-1 text-asa-muted hover:text-asa-text transition-colors cursor-pointer" aria-label="Collapse sidebar">
-            <ChevronLeft size={16} />
-          </button>
-        )}
       </div>
 
-      {/* Collapse button when collapsed */}
-      {collapsed && (
-        <div className="flex justify-center py-3 border-b border-asa-border">
-          <button onClick={onToggle} className="p-1 text-asa-muted hover:text-asa-text transition-colors cursor-pointer" aria-label="Expand sidebar">
-            <ChevronRight size={16} />
-          </button>
-        </div>
-      )}
+      {/* Collapse toggle at edge */}
+      <button
+        onClick={onToggle}
+        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-50 flex items-center justify-center w-6 h-6 rounded-full bg-asa-surface border border-asa-border text-asa-muted hover:text-asa-text hover:border-asa-primary shadow-sm transition-all cursor-pointer"
+        aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+      >
+        {collapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
+      </button>
 
       {/* Navigation */}
       <nav className="flex-1 overflow-y-auto px-2 py-4 space-y-1">

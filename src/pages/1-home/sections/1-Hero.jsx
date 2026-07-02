@@ -80,8 +80,8 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="mt-10 flex flex-wrap gap-4 justify-center"
           >
-            <Button to="/auth?mode=signup" size="lg">
-              Apply Now <ArrowRight className="h-4 w-4" />
+            <Button to="/programmes" size="lg">
+              Explore Programmes <ArrowRight className="h-4 w-4" />
             </Button>
             <Button
               variant="outline"

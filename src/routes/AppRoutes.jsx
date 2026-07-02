@@ -1,17 +1,18 @@
 import { Routes, Route, Navigate } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
 import ProtectedRoute from "../components/auth/ProtectedRoute"
-import MainLayout from "../components/layout/MainLayout"
+import MainLayout from "../components/layout/Layout"
 import DashboardLayout from "../dashboard/components/DashboardLayout"
 import HomePage from "../pages/1-home/HomePage"
 import AboutPage from "../pages/2-about/AboutPage"
-import OutreachPage from "../pages/3-schools-outreach/OutreachPage"
-import TalentsPagePublic from "../pages/4-talents/TalentsPage"
+import OutreachPage from "../pages/3-schools-outreach/SchoolsOutreachPage"
+import TalentsPagePublic from "../pages/4-talent-showcase/TalentPage"
 import GalleryPagePublic from "../pages/5-gallery/GalleryPage"
-import EventsPagePublic from "../pages/6-events/EventsPage"
-import ProgrammesPagePublic from "../pages/7-programmes/ProgrammesPage"
-import ContactPage from "../pages/8-contact/ContactPage"
+import EventsPagePublic from "../pages/6-events-workshops/EventsPage"
+import ProgrammesPagePublic from "../pages/8-programmes/ProgrammesPage"
+import ContactPage from "../pages/7-contact/ContactPage"
 import AuthPage from "../pages/0-auth/AuthPage"
+import ApplyPage from "../pages/0-apply/ApplyPage"
 // Dashboard Pages
 import OverviewPage from "../dashboard/pages/1-overview/OverviewPage"
 import TalentsPage from "../dashboard/pages/2-talents/TalentsPage"
@@ -19,6 +20,7 @@ import GalleryPage from "../dashboard/pages/3-gallery/GalleryPage"
 import EventsPage from "../dashboard/pages/4-events/EventsPage"
 import ProgrammesPage from "../dashboard/pages/5-programmes/ProgrammesPage"
 import VotingPage from "../dashboard/pages/6-voting/VotingPage"
+import ApplicationsPage from "../dashboard/pages/7-applications/ApplicationsPage"
 import SettingsPage from "../dashboard/pages/settings/SettingsPage"
 import LoginPage from "../dashboard/pages/0-login/LoginPage"
 
@@ -37,12 +39,13 @@ export default function AppRoutes() {
         <Route path="/events" element={<EventsPagePublic />} />
         <Route path="/programmes" element={<ProgrammesPagePublic />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/apply" element={<ApplyPage />} />
         <Route path="/auth" element={<AuthPage />} />
-        <Route path="/auth/login" element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <AuthPage />} />
+        <Route path="/auth/login" element={isAuthenticated() ? <Navigate to="/dashboard" replace /> : <AuthPage />} />
       </Route>
 
       {/* Auth route (standalone for login) */}
-      <Route path="/dashboard/login" element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <LoginPage />} />
+      <Route path="/dashboard/login" element={isAuthenticated() ? <Navigate to="/dashboard" replace /> : <LoginPage />} />
 
       {/* Protected dashboard routes */}
       <Route
@@ -58,6 +61,7 @@ export default function AppRoutes() {
         <Route path="/dashboard/events" element={<EventsPage />} />
         <Route path="/dashboard/programmes" element={<ProgrammesPage />} />
         <Route path="/dashboard/voting" element={<VotingPage />} />
+        <Route path="/dashboard/applications" element={<ApplicationsPage />} />
         <Route path="/dashboard/settings" element={<SettingsPage />} />
       </Route>
 

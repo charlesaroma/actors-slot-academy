@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link, NavLink, useLocation } from "react-router-dom"
 import { motion, AnimatePresence } from "motion/react"
-import { Menu, X, ChevronDown, LayoutDashboard } from "lucide-react"
+import { Menu, X, ChevronDown } from "lucide-react"
 import { NAV_LINKS } from "../../data/navigation"
 
 export default function Navbar() {
@@ -9,7 +9,6 @@ export default function Navbar() {
   const [openDropdown, setOpenDropdown] = useState(null)
   const [mobileExpanded, setMobileExpanded] = useState(null)
   const [scrolled, setScrolled] = useState(false)
-  const [isAuthed, setIsAuthed] = useState(false)
   const { pathname } = useLocation()
 
   useEffect(() => {
@@ -26,13 +25,6 @@ export default function Navbar() {
     }
     return () => { document.body.style.overflow = "" }
   }, [mobileOpen])
-
-  useEffect(() => {
-    const check = () => setIsAuthed(!!localStorage.getItem("asa_admin_token"))
-    check()
-    window.addEventListener("storage", check)
-    return () => window.removeEventListener("storage", check)
-  }, [])
 
   const closeMobile = () => {
     setMobileOpen(false)
@@ -135,22 +127,12 @@ export default function Navbar() {
         </nav>
 
         {/* CTA */}
-        {isAuthed ? (
-          <Link
-            to="/dashboard"
-            className="hidden md:inline-flex items-center gap-2 rounded-lg bg-asa-primary px-5 py-2 text-sm font-semibold text-asa-background transition-all duration-200 hover:bg-asa-primary-bright hover:shadow-[0_0_20px_rgba(201,154,62,0.35)]"
-          >
-            <LayoutDashboard className="h-4 w-4" />
-            Dashboard
-          </Link>
-        ) : (
-          <Link
-            to="/auth/login"
-            className="hidden rounded-lg bg-asa-primary px-5 py-2 text-sm font-semibold text-asa-background transition-all duration-200 hover:bg-asa-primary-bright hover:shadow-[0_0_20px_rgba(201,154,62,0.35)] md:inline-block"
-          >
-            Sign In
-          </Link>
-        )}
+        <Link
+          to="/apply"
+          className="hidden rounded-lg bg-asa-primary px-5 py-2 text-sm font-semibold text-asa-background transition-all duration-200 hover:bg-asa-primary-bright hover:shadow-[0_0_20px_rgba(201,154,62,0.35)] md:inline-block"
+        >
+          Apply Now
+        </Link>
 
         {/* Mobile toggle */}
         <button
@@ -261,24 +243,13 @@ export default function Navbar() {
                 transition={{ duration: 0.25, delay: 0.15 }}
                 className="mt-6"
               >
-                {isAuthed ? (
-                  <Link
-                    to="/dashboard"
-                    onClick={closeMobile}
-                    className="flex items-center justify-center gap-2 rounded-lg bg-asa-primary px-3 py-3 text-center text-base font-semibold text-asa-background"
-                  >
-                    <LayoutDashboard className="h-4 w-4" />
-                    Dashboard
-                  </Link>
-                ) : (
-                  <Link
-                    to="/auth/login"
-                    onClick={closeMobile}
-                    className="block rounded-lg bg-asa-primary px-3 py-3 text-center text-base font-semibold text-asa-background"
-                  >
-                    Sign In
-                  </Link>
-                )}
+                <Link
+                  to="/apply"
+                  onClick={closeMobile}
+                  className="block rounded-lg bg-asa-primary px-3 py-3 text-center text-base font-semibold text-asa-background"
+                >
+                  Apply Now
+                </Link>
               </motion.div>
             </nav>
           </motion.div>

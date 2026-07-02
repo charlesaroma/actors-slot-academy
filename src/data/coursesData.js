@@ -1,4 +1,4 @@
-export const INTAKES = [
+const COURSES_DATA = [
   {
     id: "intake-2026-q2",
     season: "Quarter 2 2026",
@@ -34,6 +34,55 @@ export const INTAKES = [
     capacity: 24,
     spotsLeft: 24,
     schedule: "Saturdays, 9:00 AM – 4:00 PM",
+  },
+]
+
+export const coursesData = COURSES_DATA
+export const INTAKES = COURSES_DATA
+
+export const PROGRAMMES = [
+  {
+    id: "prog-1",
+    title: "Diploma in Performing Arts",
+    subtitle: "Comprehensive 16-week actor training programme",
+    duration: "16 weeks",
+    description:
+      "A rigorous, immersive programme covering voice, movement, script analysis, screen acting, and African storytelling traditions. Culminates in a recorded showcase performance.",
+    modules: [
+      { name: "Foundations of Performance", description: "Voice projection, body movement, stage presence." },
+      { name: "Script Analysis & Character Building", description: "Breaking down scripts, understanding subtext." },
+      { name: "African Storytelling & Oral Traditions", description: "Griot techniques, folklore adaptation." },
+      { name: "Screen Acting & Camera Techniques", description: "Film and TV performance fundamentals." },
+      { name: "Monologue Preparation & Showcase", description: "Select, rehearse, and perform a showcase monologue." },
+    ],
+  },
+  {
+    id: "prog-2",
+    title: "Short Course: Voice & Speech",
+    subtitle: "4-week intensive voice training",
+    duration: "4 weeks",
+    description:
+      "Master vocal projection, accent work, diction, and breath control in this focused short course designed for actors and public speakers.",
+    modules: [
+      { name: "Breath & Resonance", description: "Diaphragmatic breathing and vocal resonance techniques." },
+      { name: "Articulation & Diction", description: "Crisp consonants, open vowels, and clarity." },
+      { name: "Accent & Dialect", description: "Neutral accent and character voice work." },
+      { name: "Performance Piece", description: "Apply techniques in a recorded voice performance." },
+    ],
+  },
+  {
+    id: "prog-3",
+    title: "Children's Theatre Workshop",
+    subtitle: "Holiday programme for ages 8–14",
+    duration: "1 week",
+    description:
+      "A fun, high-energy holiday workshop introducing children to storytelling, improvisation, and creative expression through theatre games and group performance.",
+    modules: [
+      { name: "Storytelling & Imagination", description: "Creating characters from scratch." },
+      { name: "Movement & Mime", description: "Expressive body language and physical comedy." },
+      { name: "Voice & Chorus", description: "Group speaking, chanting, and vocal warm-ups." },
+      { name: "Showcase Performance", description: "End-of-week performance for parents." },
+    ],
   },
 ]
 

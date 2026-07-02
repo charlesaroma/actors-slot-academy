@@ -109,7 +109,12 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-14 border-t border-asa-border pt-6 flex flex-col items-center gap-2 text-center text-xs text-asa-muted sm:flex-row sm:justify-between">
           <p>&copy; {new Date().getFullYear()} Actor&apos;s Slot Academy. All rights reserved.</p>
-          <p className="label-mono text-[9px] text-asa-primary/60">Kampala · Uganda</p>
+          <p className="flex items-center gap-3">
+            <span className="label-mono text-[9px] text-asa-primary/60">Kampala · Uganda</span>
+            <Link to="/auth/login" className="label-mono text-[9px] text-asa-muted/30 hover:text-asa-muted/60 transition-colors">
+              Admin
+            </Link>
+          </p>
         </div>
       </div>
     </footer>

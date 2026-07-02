@@ -84,7 +84,7 @@ export default function UpcomingIntakes() {
                 {/* CTA */}
                 <div className="mt-8">
                   {isOpen ? (
-                    <Button to="/auth?mode=signup" size="sm" className="w-full">
+                    <Button to="/apply" size="sm" className="w-full">
                       Apply Now
                     </Button>
                   ) : (

@@ -77,7 +77,7 @@ export default function IntakeCalendar() {
 
                 {intake.status === "open" && (
                   <a
-                    href="/auth/signup"
+                    href="/apply"
                     className="mt-6 block rounded-lg bg-asa-primary px-4 py-2.5 text-center text-sm font-semibold text-asa-background transition-all duration-200 hover:bg-asa-primary-bright"
                   >
                     Apply Now
