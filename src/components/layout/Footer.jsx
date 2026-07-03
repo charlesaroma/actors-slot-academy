@@ -107,12 +107,22 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-14 border-t border-asa-border pt-6 flex flex-col items-center gap-2 text-center text-xs text-asa-muted sm:flex-row sm:justify-between">
-          <p>&copy; {new Date().getFullYear()} Actor&apos;s Slot Academy. All rights reserved.</p>
+        <div className="mt-14 border-t border-asa-border pt-6 flex flex-col items-center gap-4 text-center text-xs text-asa-muted sm:flex-row sm:justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+            <p>&copy; {new Date().getFullYear()} Actor&apos;s Slot Academy. All rights reserved.</p>
+            <p className="text-[10px] text-asa-muted/50">
+              Designed by <span className="hover:text-asa-primary transition-colors cursor-default">Charles Aroma</span>
+            </p>
+          </div>
           <p className="flex items-center gap-3">
             <span className="label-mono text-[9px] text-asa-primary/60">Kampala · Uganda</span>
-            <Link to="/auth/login" className="label-mono text-[9px] text-asa-muted/30 hover:text-asa-muted/60 transition-colors">
-              Admin
+            <span className="label-mono text-[9px] text-asa-muted/40">·</span>
+            <Link to="/privacy" className="label-mono text-[9px] text-asa-muted/60 hover:text-asa-text transition-colors">
+              Privacy Policy
+            </Link>
+            <span className="label-mono text-[9px] text-asa-muted/40">·</span>
+            <Link to="/auth/login" className="label-mono text-[9px] text-asa-primary hover:text-asa-primary-bright transition-colors">
+              Admin Login
             </Link>
           </p>
         </div>

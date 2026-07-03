@@ -10,19 +10,20 @@ import TalentsPagePublic from "../pages/4-talent-showcase/TalentPage"
 import GalleryPagePublic from "../pages/5-gallery/GalleryPage"
 import EventsPagePublic from "../pages/6-events-workshops/EventsPage"
 import ProgrammesPagePublic from "../pages/8-programmes/ProgrammesPage"
+import PrivacyPolicyPage from "../pages/9-privacy/PrivacyPolicyPage"
 import ContactPage from "../pages/7-contact/ContactPage"
 import AuthPage from "../pages/0-auth/AuthPage"
-import ApplyPage from "../pages/0-apply/ApplyPage"
+import ApplyPage from "../pages/10-apply/ApplyPage"
 // Dashboard Pages
 import OverviewPage from "../dashboard/pages/1-overview/OverviewPage"
-import TalentsPage from "../dashboard/pages/2-talents/TalentsPage"
-import GalleryPage from "../dashboard/pages/3-gallery/GalleryPage"
-import EventsPage from "../dashboard/pages/4-events/EventsPage"
-import ProgrammesPage from "../dashboard/pages/5-programmes/ProgrammesPage"
-import VotingPage from "../dashboard/pages/6-voting/VotingPage"
-import ApplicationsPage from "../dashboard/pages/7-applications/ApplicationsPage"
-import SettingsPage from "../dashboard/pages/settings/SettingsPage"
-import LoginPage from "../dashboard/pages/0-login/LoginPage"
+import TalentsPage from "../dashboard/pages/3-talents/TalentsPage"
+import GalleryPage from "../dashboard/pages/4-gallery/GalleryPage"
+import EventsPage from "../dashboard/pages/6-events/EventsPage"
+import ProgrammesPage from "../dashboard/pages/8-programmes/ProgrammesPage"
+import VotingPage from "../dashboard/pages/9-voting/VotingPage"
+import ApplicationsPage from "../dashboard/pages/10-applications/ApplicationsPage"
+import SettingsPage from "../dashboard/pages/11-settings/SettingsPage"
+import LoginPage from "../dashboard/pages/12-login/LoginPage"
 
 export default function AppRoutes() {
   const { isAuthenticated } = useAuth()
@@ -38,6 +39,7 @@ export default function AppRoutes() {
         <Route path="/gallery" element={<GalleryPagePublic />} />
         <Route path="/events" element={<EventsPagePublic />} />
         <Route path="/programmes" element={<ProgrammesPagePublic />} />
+        <Route path="/privacy" element={<PrivacyPolicyPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/apply" element={<ApplyPage />} />
         <Route path="/auth" element={<AuthPage />} />

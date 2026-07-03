@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { Plus, Search, Edit3, Trash2, X, Check, ToggleLeft, ToggleRight, Users } from "lucide-react"
 
@@ -14,7 +14,21 @@ const emptyCampaign = {
 }
 
 export default function VotingPage() {
-  const [campaigns, setCampaigns] = useState([])
+  const [campaigns, setCampaigns] = useState(() => {
+    const saved = localStorage.getItem("asa-voting-campaigns")
+    if (saved) {
+      try {
+        return JSON.parse(saved)
+      } catch (e) {
+        return []
+      }
+    }
+    return []
+  })
+
+  useEffect(() => {
+    localStorage.setItem("asa-voting-campaigns", JSON.stringify(campaigns))
+  }, [campaigns])
   const [search, setSearch] = useState("")
   const [modalOpen, setModalOpen] = useState(false)
   const [editing, setEditing] = useState(null)

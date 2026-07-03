@@ -84,11 +84,12 @@ export default function Hero() {
               Explore Programmes <ArrowRight className="h-4 w-4" />
             </Button>
             <Button
+              to="/about"
               variant="outline"
               size="lg"
               className="border-asa-text/20 text-asa-text hover:bg-asa-text/5 hover:border-asa-text/40"
             >
-              <Play className="h-4 w-4" /> Watch Showreel
+              Our Story
             </Button>
           </motion.div>
 

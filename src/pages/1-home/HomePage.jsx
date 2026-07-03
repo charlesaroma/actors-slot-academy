@@ -1,4 +1,5 @@
 import Hero from "./sections/1-Hero"
+import BannerSection from "./sections/1.5-Banner"
 import CorePillars from "./sections/2-CorePillars"
 import TalentSpotlight from "./sections/3-TalentSpotlight"
 import ScriptPreview from "./sections/4-ScriptPreview"
@@ -9,6 +10,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <BannerSection />
       <CorePillars />
       <TalentSpotlight />
       <ScriptPreview />
