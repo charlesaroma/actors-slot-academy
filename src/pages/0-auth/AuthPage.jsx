@@ -50,6 +50,14 @@ export default function AuthPage() {
       />
 
       <div className="relative z-10 w-full max-w-4xl grid md:grid-cols-2 rounded-2xl border border-asa-border bg-asa-surface overflow-hidden shadow-2xl glow-gold">
+        {/* Light Sweep */}
+        <motion.div
+          initial={{ x: "-150%" }}
+          animate={{ x: "250%" }}
+          transition={{ duration: 1.5, ease: "easeInOut", delay: 0.2 }}
+          className="absolute inset-y-0 left-0 z-50 pointer-events-none w-1/3 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12"
+        />
+
         {/* Left column: Cinematic Promo */}
         <div className="relative hidden md:flex flex-col justify-between p-12 bg-[url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&q=80')] bg-cover bg-center">
           <div className="absolute inset-0 bg-gradient-to-t from-asa-background via-asa-background/70 to-transparent" />

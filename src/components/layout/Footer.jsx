@@ -111,7 +111,7 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
             <p>&copy; {new Date().getFullYear()} Actor&apos;s Slot Academy. All rights reserved.</p>
             <p className="text-[10px] text-asa-muted/50">
-              Designed by <span className="hover:text-asa-primary transition-colors cursor-default">Charles Aroma</span>
+              &lt; Designed by <span className="hover:text-asa-primary transition-colors cursor-default">Charles Aroma</span> &gt;
             </p>
           </div>
           <p className="flex items-center gap-3">
@@ -121,8 +121,8 @@ export default function Footer() {
               Privacy Policy
             </Link>
             <span className="label-mono text-[9px] text-asa-muted/40">·</span>
-            <Link to="/auth/login" className="label-mono text-[9px] text-asa-primary hover:text-asa-primary-bright transition-colors">
-              Admin Login
+            <Link to="/auth/login" className="ml-4 rounded-md border border-asa-border bg-asa-background px-3 py-1.5 font-headline text-[10px] font-bold text-asa-primary tracking-widest hover:border-asa-primary hover:bg-asa-primary/10 transition-colors uppercase">
+              Admin Access
             </Link>
           </p>
         </div>

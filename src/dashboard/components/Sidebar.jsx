@@ -20,7 +20,7 @@ export default function Sidebar({ collapsed, onToggle }) {
   return (
     <aside className={`fixed top-0 left-0 h-screen bg-asa-surface border-r border-asa-border z-50 flex flex-col transition-all duration-300 ease-in-out ${
       collapsed ? "w-16" : "w-64"
-    } relative`}>
+    }`}>
       {/* Logo */}
       <div className={`flex items-center h-16 shrink-0 border-b border-asa-border px-4 ${collapsed ? "justify-center" : "justify-between"}`}>
         <Link to="/" className={`flex items-center group ${collapsed ? "justify-center w-full" : "gap-3"}`}>

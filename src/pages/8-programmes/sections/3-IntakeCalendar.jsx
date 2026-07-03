@@ -18,8 +18,8 @@ const statusConfig = {
 
 export default function IntakeCalendar() {
   return (
-    <section className="relative px-4 py-24 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
+    <section className="relative py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
           label="Schedule"
           title="Upcoming Intakes"

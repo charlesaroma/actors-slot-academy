@@ -23,7 +23,7 @@ import ProgrammesPage from "../dashboard/pages/8-programmes/ProgrammesPage"
 import VotingPage from "../dashboard/pages/9-voting/VotingPage"
 import ApplicationsPage from "../dashboard/pages/10-applications/ApplicationsPage"
 import SettingsPage from "../dashboard/pages/11-settings/SettingsPage"
-import LoginPage from "../dashboard/pages/12-login/LoginPage"
+
 
 export default function AppRoutes() {
   const { isAuthenticated } = useAuth()
@@ -42,12 +42,10 @@ export default function AppRoutes() {
         <Route path="/privacy" element={<PrivacyPolicyPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/apply" element={<ApplyPage />} />
-        <Route path="/auth" element={<AuthPage />} />
-        <Route path="/auth/login" element={isAuthenticated() ? <Navigate to="/dashboard" replace /> : <AuthPage />} />
       </Route>
-
-      {/* Auth route (standalone for login) */}
-      <Route path="/dashboard/login" element={isAuthenticated() ? <Navigate to="/dashboard" replace /> : <LoginPage />} />
+      {/* Full-screen Auth routes (No Navbar/Footer) */}
+      <Route path="/auth" element={<AuthPage />} />
+      <Route path="/auth/login" element={isAuthenticated() ? <Navigate to="/dashboard" replace /> : <AuthPage />} />
 
       {/* Protected dashboard routes */}
       <Route

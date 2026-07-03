@@ -49,10 +49,11 @@ Candidate {
 - All data is stored in React state + localStorage for persistence across refreshes.
 - No real backend; all operations are simulated.
 - Vote counting is manual (admin can adjust counts) until public voting UI is built.
-- File paths:
-  - `src/dashboard/pages/6-voting/VotingPage.jsx` — main list + CRUD
-  - `src/data/votingData.js` — initial empty campaigns array
-  - `src/data/votingData.js` — localStorage read/write helpers
+- **Admin File Paths:**
+  - `src/dashboard/pages/9-voting/VotingPage.jsx` — main list + CRUD
+  - `src/data/votingData.js` — initial empty campaigns array and localStorage helpers
+- **Public File Paths (Future):**
+  - `src/pages/13-vote/VotePage.jsx` — public voting interface for `/vote/:campaignId`
 
 ## Future Enhancements
 1. Public voting UI at `/vote/:campaignId` with rate limiting.

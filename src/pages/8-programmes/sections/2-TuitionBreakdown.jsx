@@ -5,10 +5,10 @@ import { Check, CreditCard } from "lucide-react"
 
 export default function TuitionBreakdown() {
   return (
-    <section className="relative px-4 py-24 sm:px-6 lg:px-8">
+    <section className="relative py-24">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-asa-primary/[0.02] to-transparent pointer-events-none" />
 
-      <div className="mx-auto max-w-7xl relative">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
           label="Investment"
           title="Tuition & What's Included"
