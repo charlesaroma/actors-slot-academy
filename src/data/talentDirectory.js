@@ -1,6 +1,7 @@
 const TALENTS_DATA = [
   {
     id: "catherine-nantongo",
+    code: "ASA-001",
     name: "Catherine Nantongo",
     age: 24,
     category: "Film & TV",
@@ -8,7 +9,7 @@ const TALENTS_DATA = [
     rating: 4.8,
     image: "https://images.unsplash.com/photo-1530785602389-07594beb8b73?w=400&h=500&fit=crop",
     languages: ["English", "Luganda", "Swahili"],
-    bio: "A fearless screen actor with a gift for raw, emotional storytelling. Zuri brings depth and vulnerability to every role.",
+    bio: "A fearless screen actor with a gift for raw, emotional storytelling. Catherine brings depth and vulnerability to every role.",
     skills: ["Method Acting", "Accents", "Stunts", "Improvisation"],
     reels: [
       { title: "Monologue: 'The Last Son'", url: "https://youtube.com/watch?v=example1" },
@@ -19,6 +20,7 @@ const TALENTS_DATA = [
   },
   {
     id: "sarah-nakato",
+    code: "ASA-002",
     name: "Sarah Nakato",
     age: 22,
     category: "Theatre",
@@ -26,7 +28,7 @@ const TALENTS_DATA = [
     rating: 4.9,
     image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&h=500&fit=crop",
     languages: ["English", "Luganda", "Runyankole"],
-    bio: "A commanding stage presence with classical training in African theatre traditions. Amara moves audiences to laughter and tears.",
+    bio: "A commanding stage presence with classical training in African theatre traditions. Sarah moves audiences to laughter and tears.",
     skills: ["Stage Combat", "Choral Singing", "Physical Theatre", "Directing"],
     reels: [
       { title: "Stage: 'Mama's Last Dance'", url: "https://youtube.com/watch?v=example2" },
@@ -37,6 +39,7 @@ const TALENTS_DATA = [
   },
   {
     id: "michael-wasswa",
+    code: "ASA-003",
     name: "Michael Wasswa",
     age: 26,
     category: "Film & TV",
@@ -55,6 +58,7 @@ const TALENTS_DATA = [
   },
   {
     id: "grace-nakiwala",
+    code: "ASA-004",
     name: "Grace Nakiwala",
     age: 23,
     category: "Voice Acting",
@@ -62,7 +66,7 @@ const TALENTS_DATA = [
     rating: 4.6,
     image: "https://images.unsplash.com/photo-1522938974444-f12497b69347?w=400&h=500&fit=crop",
     languages: ["English", "Luganda", "French"],
-    bio: "A voice artist with remarkable range — from animated characters to documentary narration. Nkechi's voice carries emotion and authority.",
+    bio: "A voice artist with remarkable range — from animated characters to documentary narration. Grace's voice carries emotion and authority.",
     skills: ["Voice Modulation", "Accents", "Narration", "Dubbing"],
     reels: [
       { title: "Voice Demo Reel 2026", url: "https://youtube.com/watch?v=example4" },
@@ -73,6 +77,7 @@ const TALENTS_DATA = [
   },
   {
     id: "daniel-ssempijja",
+    code: "ASA-005",
     name: "Daniel Ssempijja",
     age: 28,
     category: "Theatre",
@@ -91,6 +96,7 @@ const TALENTS_DATA = [
   },
   {
     id: "faith-nabatanzi",
+    code: "ASA-006",
     name: "Faith Nabatanzi",
     age: 21,
     category: "Film & TV",
@@ -98,7 +104,7 @@ const TALENTS_DATA = [
     rating: 4.9,
     image: "https://images.unsplash.com/photo-1527201987695-67c06571957e?w=400&h=500&fit=crop",
     languages: ["English", "Luganda", "Swahili"],
-    bio: "A rising star with incredible emotional range. Chioma's screen tests have been described as 'hauntingly real' by industry directors.",
+    bio: "A rising star with incredible emotional range. Faith's screen tests have been described as 'hauntingly real' by industry directors.",
     skills: ["Meisner Technique", "Screen Combat", "Dialect Coaching", "Singing"],
     reels: [
       { title: "Audition: 'Silent Waters'", url: "https://youtube.com/watch?v=example6" },
@@ -109,6 +115,7 @@ const TALENTS_DATA = [
   },
   {
     id: "joshua-kintu",
+    code: "ASA-007",
     name: "Joshua Kintu",
     age: 25,
     category: "Film & TV",
@@ -127,6 +134,7 @@ const TALENTS_DATA = [
   },
   {
     id: "david-okello",
+    code: "ASA-008",
     name: "David Okello",
     age: 27,
     category: "Theatre",
@@ -141,6 +149,120 @@ const TALENTS_DATA = [
     ],
     gallery: [
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=800&fit=crop",
+    ],
+  },
+  {
+    id: "james-mugisha",
+    code: "ASA-009",
+    name: "James Mugisha",
+    age: 34,
+    category: "Direction",
+    location: "Kampala, Uganda",
+    rating: 4.7,
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=500&fit=crop",
+    languages: ["English", "Luganda", "Swahili"],
+    bio: "An award-winning director known for visually striking narratives that explore East African identity, tradition, and modernity.",
+    skills: ["Directing", "Script Supervision", "Blocking", "Visual Storytelling"],
+    reels: [
+      { title: "Short Film: 'The Crossing'", url: "https://youtube.com/watch?v=example9" },
+    ],
+    gallery: [
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=800&fit=crop",
+    ],
+  },
+  {
+    id: "aisha-nambi",
+    code: "ASA-010",
+    name: "Aisha Nambi",
+    age: 29,
+    category: "Cinematography",
+    location: "Kampala, Uganda",
+    rating: 4.8,
+    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=500&fit=crop",
+    languages: ["English", "Luganda"],
+    bio: "A visionary cinematographer with an eye for natural light and rich compositional storytelling. Aisha brings cinematic depth to every frame.",
+    skills: ["Camera Operation", "Lighting Design", "Color Grading", "Drone Operation"],
+    reels: [
+      { title: "Cinematography Reel 2026", url: "https://youtube.com/watch?v=example10" },
+    ],
+    gallery: [
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&h=800&fit=crop",
+    ],
+  },
+  {
+    id: "samuel-kyobe",
+    code: "ASA-011",
+    name: "Samuel Kyobe",
+    age: 31,
+    category: "Post-Production",
+    location: "Jinja, Uganda",
+    rating: 4.6,
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop",
+    languages: ["English", "Lusoga", "Swahili"],
+    bio: "A meticulous film editor who crafts rhythm and emotion from raw footage. Samuel excels in narrative pacing and seamless continuity.",
+    skills: ["Video Editing", "Sound Design", "Color Correction", "VFX Compositing"],
+    reels: [
+      { title: "Editing Showcase 2026", url: "https://youtube.com/watch?v=example11" },
+    ],
+    gallery: [
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=800&fit=crop",
+    ],
+  },
+  {
+    id: "patricia-auma",
+    code: "ASA-012",
+    name: "Patricia Auma",
+    age: 26,
+    category: "Photography",
+    location: "Mbale, Uganda",
+    rating: 4.5,
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop",
+    languages: ["English", "Luganda", "French"],
+    bio: "A talented photographer specializing in portrait and editorial work. Patricia captures authentic moments with striking composition and natural warmth.",
+    skills: ["Portrait Photography", "Editorial Shoots", "Photo Editing", "Lighting Setup"],
+    reels: [
+      { title: "Photography Portfolio 2026", url: "https://youtube.com/watch?v=example12" },
+    ],
+    gallery: [
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=800&fit=crop",
+    ],
+  },
+  {
+    id: "emmanuel-ssali",
+    code: "ASA-013",
+    name: "Emmanuel Ssali",
+    age: 30,
+    category: "Sound",
+    location: "Entebbe, Uganda",
+    rating: 4.7,
+    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=500&fit=crop",
+    languages: ["English", "Luganda", "Swahili"],
+    bio: "A seasoned sound designer and audio engineer with a deep understanding of sonic storytelling. Emmanuel crafts immersive soundscapes for film and theatre.",
+    skills: ["Sound Design", "Field Recording", "Mixing & Mastering", "Foley Artistry"],
+    reels: [
+      { title: "Sound Design Reel 2026", url: "https://youtube.com/watch?v=example13" },
+    ],
+    gallery: [
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&h=800&fit=crop",
+    ],
+  },
+  {
+    id: "ruth-nalwoga",
+    code: "ASA-014",
+    name: "Ruth Nalwoga",
+    age: 28,
+    category: "Writing",
+    location: "Kampala, Uganda",
+    rating: 4.6,
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=500&fit=crop",
+    languages: ["English", "Luganda", "Swahili"],
+    bio: "A gifted screenwriter whose work weaves together Ugandan oral traditions with contemporary cinematic structure. Ruth's scripts resonate with authentic voice.",
+    skills: ["Script Writing", "Story Development", "Dialogue", "Script Editing"],
+    reels: [
+      { title: "Writing Portfolio 2026", url: "https://youtube.com/watch?v=example14" },
+    ],
+    gallery: [
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&h=800&fit=crop",
     ],
   },
 ]

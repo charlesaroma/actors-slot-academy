@@ -15,6 +15,8 @@ import ContactPage from "../pages/7-contact/ContactPage"
 import AuthPage from "../pages/0-auth/AuthPage"
 import ApplyPage from "../pages/10-apply/ApplyPage"
 // Dashboard Pages
+import AdminLoginPage from "../dashboard/pages/0-auth/AdminLoginPage"
+import AdminForgotPassword from "../dashboard/pages/0-auth/AdminForgotPassword"
 import OverviewPage from "../dashboard/pages/1-overview/OverviewPage"
 import TalentsPage from "../dashboard/pages/3-talents/TalentsPage"
 import GalleryPage from "../dashboard/pages/4-gallery/GalleryPage"
@@ -23,6 +25,7 @@ import ProgrammesPage from "../dashboard/pages/8-programmes/ProgrammesPage"
 import VotingPage from "../dashboard/pages/9-voting/VotingPage"
 import ApplicationsPage from "../dashboard/pages/10-applications/ApplicationsPage"
 import SettingsPage from "../dashboard/pages/11-settings/SettingsPage"
+import CastingRequestsPage from "../dashboard/pages/casting/CastingRequestsPage"
 
 
 export default function AppRoutes() {
@@ -47,6 +50,10 @@ export default function AppRoutes() {
       <Route path="/auth" element={<AuthPage />} />
       <Route path="/auth/login" element={isAuthenticated() ? <Navigate to="/dashboard" replace /> : <AuthPage />} />
 
+      {/* Admin Auth routes (outside protected wrapper) */}
+      <Route path="/dashboard/auth/login" element={<AdminLoginPage />} />
+      <Route path="/dashboard/auth/forgot-password" element={<AdminForgotPassword />} />
+
       {/* Protected dashboard routes */}
       <Route
         element={
@@ -62,6 +69,7 @@ export default function AppRoutes() {
         <Route path="/dashboard/programmes" element={<ProgrammesPage />} />
         <Route path="/dashboard/voting" element={<VotingPage />} />
         <Route path="/dashboard/applications" element={<ApplicationsPage />} />
+        <Route path="/dashboard/casting-requests" element={<CastingRequestsPage />} />
         <Route path="/dashboard/settings" element={<SettingsPage />} />
       </Route>
 

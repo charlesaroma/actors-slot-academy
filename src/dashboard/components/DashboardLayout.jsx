@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Outlet, NavLink, Link, useNavigate, useLocation } from "react-router-dom"
 import { motion, AnimatePresence } from "motion/react"
-import { LayoutDashboard, Users, Image, CalendarRange, BookOpen, Vote, Settings, LogOut, Menu, X, FileText } from "lucide-react"
+import { LayoutDashboard, Users, Image, CalendarRange, BookOpen, Vote, Settings, LogOut, Menu, X, FileText, Video } from "lucide-react"
 import Sidebar from "./Sidebar"
 import { useAuth } from "../../contexts/AuthContext"
 
@@ -12,6 +12,7 @@ const sidebarLinks = [
   { name: "Events", path: "/dashboard/events", icon: CalendarRange },
   { name: "Programmes", path: "/dashboard/programmes", icon: BookOpen },
   { name: "Applications", path: "/dashboard/applications", icon: FileText },
+  { name: "Casting Requests", path: "/dashboard/casting-requests", icon: Video },
   { name: "Voting", path: "/dashboard/voting", icon: Vote },
   { name: "Settings", path: "/dashboard/settings", icon: Settings },
 ]
@@ -19,6 +20,7 @@ const sidebarLinks = [
 export default function DashboardLayout() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [sweepDone, setSweepDone] = useState(false)
   const navigate = useNavigate()
   const location = useLocation()
   const { logout } = useAuth()
@@ -27,6 +29,25 @@ export default function DashboardLayout() {
 
   return (
     <div className="min-h-screen bg-asa-background text-asa-text flex relative">
+      {/* Welcome light sweep on mount */}
+      <AnimatePresence>
+        {!sweepDone && (
+          <motion.div
+            key="light-sweep"
+            initial={{ x: "-120%" }}
+            animate={{ x: "120%" }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut", delay: 0.15 }}
+            onAnimationComplete={() => setSweepDone(true)}
+            className="fixed inset-0 z-[9998] pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(110deg, transparent 20%, rgba(201,154,62,0.12) 45%, rgba(201,154,62,0.18) 50%, rgba(201,154,62,0.12) 55%, transparent 80%)",
+              transform: "skewX(-15deg)",
+            }}
+          />
+        )}
+      </AnimatePresence>
       {/* Film grain noise overlay */}
       <div className="fixed inset-0 pointer-events-none z-[9999]" style={{
         backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E\")",

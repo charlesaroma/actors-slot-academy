@@ -21,9 +21,10 @@ export default function TalentsPage() {
   const [form, setForm] = useState(emptyTalent)
   const [confirmDelete, setConfirmDelete] = useState(null)
 
-  const filtered = talents.filter((t) =>
-    t.name.toLowerCase().includes(search.toLowerCase())
-  )
+  const filtered = talents.filter((t) => {
+    const q = search.toLowerCase()
+    return t.name.toLowerCase().includes(q) || (t.code && t.code.toLowerCase().includes(q))
+  })
 
   const openCreate = () => {
     setForm({ ...emptyTalent, id: String(Date.now()) })
@@ -86,6 +87,7 @@ export default function TalentsPage() {
             <thead>
               <tr className="border-b border-asa-border text-xs text-asa-muted bg-asa-background/50">
                 <th className="px-5 py-4 font-semibold">Talent</th>
+                <th className="px-5 py-4 font-semibold">Code</th>
                 <th className="px-5 py-4 font-semibold">Category</th>
                 <th className="px-5 py-4 font-semibold">Age</th>
                 <th className="px-5 py-4 font-semibold">Rating</th>
@@ -102,6 +104,9 @@ export default function TalentsPage() {
                       </div>
                       <span className="font-semibold text-asa-text">{talent.name}</span>
                     </div>
+                  </td>
+                  <td className="px-5 py-4">
+                    <span className="font-mono text-xs text-asa-primary font-semibold">{talent.code}</span>
                   </td>
                   <td className="px-5 py-4 text-asa-muted">{talent.category}</td>
                   <td className="px-5 py-4 text-asa-muted">{talent.age}</td>

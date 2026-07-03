@@ -50,7 +50,7 @@ export function AuthProvider({ children }) {
     localStorage.removeItem("asa_admin_token")
     localStorage.removeItem("asa_admin_user")
     setAuth(null)
-    navigate("/")
+    navigate("/dashboard/auth/login")
   }
 
   function isAuthenticated() {

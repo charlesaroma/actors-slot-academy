@@ -121,7 +121,7 @@ export default function Footer() {
               Privacy Policy
             </Link>
             <span className="label-mono text-[9px] text-asa-muted/40">·</span>
-            <Link to="/auth/login" className="ml-4 rounded-md border border-asa-border bg-asa-background px-3 py-1.5 font-headline text-[10px] font-bold text-asa-primary tracking-widest hover:border-asa-primary hover:bg-asa-primary/10 transition-colors uppercase">
+            <Link to="/dashboard/auth/login" className="ml-4 rounded-md border border-asa-border bg-asa-background px-3 py-1.5 font-headline text-[10px] font-bold text-asa-primary tracking-widest hover:border-asa-primary hover:bg-asa-primary/10 transition-colors uppercase">
               Admin Access
             </Link>
           </p>

@@ -37,12 +37,17 @@ export default function CorePillars() {
               transition={{ duration: 0.6, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="card-ticket group p-8"
             >
-              {/* Scene slate label — reads like a shot log, not a decorative counter */}
-              <div className="mb-6 flex items-center gap-3">
-                <div className="h-px flex-1 bg-asa-border" />
-                <span className="label-mono text-asa-primary text-[9px]">
-                  Scene {String(i + 1).padStart(2, "0")}
-                </span>
+              {/* Premium Scene Slate */}
+              <div className="mb-8 flex items-center gap-4">
+                <div className="h-px flex-1 bg-gradient-to-l from-asa-primary/20 to-transparent group-hover:from-asa-primary/50 transition-colors duration-300" />
+                <div className="flex items-baseline gap-2 text-right">
+                  <span className="label-mono text-asa-muted text-[10px] uppercase tracking-widest">
+                    Scene
+                  </span>
+                  <span className="font-headline text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#E4B85C] via-[#C99A3E] to-[#E4B85C] drop-shadow-[0_0_15px_rgba(201,154,62,0.3)]">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
               </div>
               <h3 className="font-headline text-xl font-bold text-asa-text group-hover:text-asa-primary transition-colors duration-250">
                 {pillar.title}
