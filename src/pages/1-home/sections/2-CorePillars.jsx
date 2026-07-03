@@ -51,7 +51,7 @@ export default function CorePillars() {
                 {pillar.description}
               </p>
               {pillar.proverb && (
-                <blockquote className="mt-5 border-l-2 border-asa-primary/40 pl-3 text-xs italic text-asa-muted/70 group-hover:border-asa-primary transition-colors duration-250">
+                <blockquote className="mt-5 text-xs italic text-asa-muted/70">
                   &ldquo;{pillar.proverb}&rdquo;
                 </blockquote>
               )}

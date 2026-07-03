@@ -1,19 +1,12 @@
 import { motion } from "motion/react"
 
+import bannerImage from "../../../assets/images/asa-banner.jpeg"
+
 export default function BannerSection() {
   return (
-    <section className="relative h-[60vh] min-h-[400px] w-full overflow-hidden bg-asa-background">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/asa-banner.jpeg')",
-        }}
-      />
-      {/* Cinematic dark overlays */}
-      <div className="absolute inset-0 bg-gradient-to-t from-asa-background via-asa-background/40 to-asa-background/20" />
-      <div className="absolute inset-0 bg-gradient-to-r from-asa-background/80 via-transparent to-transparent" />
-      
-      <div className="relative z-10 mx-auto flex h-full max-w-7xl items-end px-4 pb-20 sm:px-6 lg:px-8">
+    <section className="w-full bg-asa-background overflow-hidden flex flex-col">
+      {/* Intro Text */}
+      <div className="mx-auto max-w-7xl w-full px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -29,6 +22,17 @@ export default function BannerSection() {
           </p>
         </motion.div>
       </div>
+
+      {/* Full-width Image */}
+      <motion.img 
+        initial={{ opacity: 0, scale: 0.98 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        src={bannerImage} 
+        alt="Actor's Slot Academy Banner" 
+        className="w-full h-auto block"
+      />
     </section>
   )
 }
