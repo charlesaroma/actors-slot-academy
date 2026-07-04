@@ -32,7 +32,7 @@ export default function ImageModal({ src, alt, onClose }) {
       >
         <button
           onClick={onClose}
-          className="absolute -right-3 -top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-asa-surface shadow-lg hover:bg-asa-border transition-colors"
+          className="absolute -right-3 -top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-asa-surface shadow-lg hover:bg-asa-border transition-colors cursor-pointer"
         >
           <X className="h-4 w-4 text-asa-text" />
         </button>
