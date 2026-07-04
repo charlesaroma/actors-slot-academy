@@ -82,7 +82,7 @@ export default function ApplyPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="mt-10 rounded-xl border border-asa-border bg-asa-surface p-8"
+              className="card-ticket mt-10 rounded-xl border border-asa-border bg-asa-surface p-8"
             >
               <Formik
                 initialValues={initialValues}
