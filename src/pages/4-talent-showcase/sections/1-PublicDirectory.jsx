@@ -6,6 +6,7 @@ import TalentCard from "../../../components/ui/TalentCard"
 import SectionHeader from "../../../components/ui/SectionHeader"
 
 const categories = ["All", ...new Set(TALENTS.map((t) => t.category))]
+const categoryLabels = { Direction: "Director" }
 
 export default function PublicDirectory() {
   const [activeCategory, setActiveCategory] = useState("All")
@@ -32,15 +33,15 @@ export default function PublicDirectory() {
           center
         />
 
-        <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border border-asa-border bg-asa-surface p-4 rounded-xl shadow-lg">
-          <div className="relative flex-1 max-w-md">
+        <div className="mt-12 space-y-4">
+          <div className="relative max-w-md">
             <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-asa-muted" />
             <input
               type="text"
               placeholder="Search by name or skill..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full rounded-lg border border-asa-border bg-asa-background py-2.5 pl-10 pr-4 text-sm text-asa-text placeholder:text-asa-muted/55 focus:border-asa-primary focus:outline-none"
+              className="w-full rounded-lg border border-asa-border bg-asa-surface py-2.5 pl-10 pr-4 text-sm text-asa-text placeholder:text-asa-muted/55 focus:border-asa-primary focus:outline-none"
             />
           </div>
 
@@ -55,7 +56,7 @@ export default function PublicDirectory() {
                     : "bg-asa-background border border-asa-border text-asa-muted hover:bg-asa-border hover:text-asa-text"
                 }`}
               >
-                {cat}
+                {categoryLabels[cat] || cat}
               </button>
             ))}
           </div>

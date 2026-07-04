@@ -1,12 +1,15 @@
+import { useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import { motion } from "motion/react"
 import { ArrowLeft, Star, MapPin, Play } from "lucide-react"
 import { TALENTS } from "../../data/talentDirectory"
 import Button from "../../components/ui/Button"
+import ImageModal from "../../components/ui/ImageModal"
 
 export default function DynamicTalentProfile() {
   const { id } = useParams()
   const talent = TALENTS.find((t) => t.id === id)
+  const [modalImage, setModalImage] = useState(null)
 
   if (!talent) {
     return (
@@ -128,11 +131,18 @@ export default function DynamicTalentProfile() {
             <p className="mt-2 text-sm text-asa-muted mb-8">Professional editorial & headshot captures.</p>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {talent.gallery.map((img, i) => (
-                <div key={i} className="aspect-[4/5] overflow-hidden rounded-xl border border-asa-border bg-asa-surface shadow-lg group cursor-zoom-in">
+                <div
+                  key={i}
+                  className="aspect-[4/5] overflow-hidden rounded-xl border border-asa-border bg-asa-surface shadow-lg group cursor-zoom-in"
+                  onClick={() => setModalImage(img)}
+                >
                   <img
                     src={img}
                     alt={`${talent.name} portfolio ${i + 1}`}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    onError={(e) => {
+                      e.target.src = "/placeholder.svg"
+                    }}
                   />
                 </div>
               ))}
@@ -140,6 +150,14 @@ export default function DynamicTalentProfile() {
           </motion.div>
         )}
       </div>
+
+      {modalImage && (
+        <ImageModal
+          src={modalImage}
+          alt={`${talent.name} portfolio`}
+          onClose={() => setModalImage(null)}
+        />
+      )}
     </div>
   )
 }

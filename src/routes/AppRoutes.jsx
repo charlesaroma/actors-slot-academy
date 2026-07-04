@@ -7,6 +7,7 @@ import HomePage from "../pages/1-home/HomePage"
 import AboutPage from "../pages/2-about/AboutPage"
 import OutreachPage from "../pages/3-schools-outreach/SchoolsOutreachPage"
 import TalentsPagePublic from "../pages/4-talent-showcase/TalentPage"
+import DynamicTalentProfile from "../pages/4-talent-showcase/DynamicTalentProfile"
 import GalleryPagePublic from "../pages/5-gallery/GalleryPage"
 import EventsPagePublic from "../pages/6-events-workshops/EventsPage"
 import ProgrammesPagePublic from "../pages/8-programmes/ProgrammesPage"
@@ -14,6 +15,9 @@ import PrivacyPolicyPage from "../pages/9-privacy/PrivacyPolicyPage"
 import ContactPage from "../pages/7-contact/ContactPage"
 import AuthPage from "../pages/0-auth/AuthPage"
 import ApplyPage from "../pages/10-apply/ApplyPage"
+import VoteForm from "../external/VoteForm"
+import TalentRequestForm from "../external/TalentRequestForm"
+import TalentViewPage from "../external/TalentViewPage"
 // Dashboard Pages
 import AdminLoginPage from "../dashboard/pages/0-auth/AdminLoginPage"
 import AdminForgotPassword from "../dashboard/pages/0-auth/AdminForgotPassword"
@@ -39,12 +43,16 @@ export default function AppRoutes() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/schools-outreach" element={<OutreachPage />} />
         <Route path="/talents" element={<TalentsPagePublic />} />
+        <Route path="/talents/:id" element={<DynamicTalentProfile />} />
         <Route path="/gallery" element={<GalleryPagePublic />} />
         <Route path="/events" element={<EventsPagePublic />} />
         <Route path="/programmes" element={<ProgrammesPagePublic />} />
         <Route path="/privacy" element={<PrivacyPolicyPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/apply" element={<ApplyPage />} />
+        <Route path="/vote/:campaignId" element={<VoteForm />} />
+        <Route path="/talent-request/submit" element={<TalentRequestForm />} />
+        <Route path="/talent-request/view/:token" element={<TalentViewPage />} />
       </Route>
       {/* Full-screen Auth routes (No Navbar/Footer) */}
       <Route path="/auth" element={<AuthPage />} />

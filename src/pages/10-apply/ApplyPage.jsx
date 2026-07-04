@@ -5,6 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from "yup"
 import { Link } from "react-router-dom"
 import { createApplication } from "../../data/applicationData"
+import Button from "../../components/ui/Button"
 
 const schema = Yup.object().shape({
   fullName: Yup.string().required("Full name is required"),
@@ -107,14 +108,15 @@ export default function ApplyPage() {
                     <FieldGroup label="Why Do You Want to Join?" name="whyJoin" as="textarea" placeholder="Tell us your story and what drives you..." />
                     <FieldGroup label="Headshot URL (optional)" name="headshotUrl" placeholder="https://..." />
 
-                    <button
+                    <Button
                       type="submit"
+                      size="lg"
+                      className="w-full"
                       disabled={isSubmitting}
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-asa-primary px-6 py-3 text-sm font-semibold text-asa-background hover:bg-asa-primary-bright transition-colors disabled:opacity-50 cursor-pointer"
                     >
                       <Send className="h-4 w-4" />
                       {isSubmitting ? "Submitting..." : "Submit Application"}
-                    </button>
+                    </Button>
                   </Form>
                 )}
               </Formik>
@@ -130,7 +132,7 @@ function FieldGroup({ label, name, type = "text", placeholder, as, className }) 
   const Component = as === "textarea" ? "textarea" : "input"
   return (
     <div className={className}>
-      <label htmlFor={name} className="label-mono text-[10px] text-asa-muted mb-1.5 block uppercase tracking-wider">
+      <label htmlFor={name} className="label-mono mb-2 block text-xs">
         {label}
       </label>
       <Field
@@ -139,7 +141,7 @@ function FieldGroup({ label, name, type = "text", placeholder, as, className }) 
         name={name}
         id={name}
         placeholder={placeholder}
-        className="w-full rounded-lg border border-asa-border bg-asa-background px-3 py-2.5 text-sm text-asa-text outline-none transition-colors focus:border-asa-primary/50 placeholder:text-asa-muted/50"
+        className="w-full rounded-lg border border-asa-border bg-asa-surface px-4 py-3 text-sm text-asa-text placeholder:text-asa-muted/50 focus:border-asa-primary focus:outline-none transition-colors"
         rows={as === "textarea" ? 3 : undefined}
       />
       <ErrorMessage name={name}>

@@ -6,7 +6,7 @@ export default function TalentCard({ talent }) {
     <Link to={`/talents/${talent.id}`} className="block group cursor-pointer">
       <div className="card-ticket h-full overflow-hidden">
         {/* Portrait */}
-        <div className="aspect-[3/4] overflow-hidden bg-asa-border">
+        <div className="aspect-square overflow-hidden bg-asa-border">
           <img
             src={talent.image || "/placeholder.svg"}
             alt={talent.name}

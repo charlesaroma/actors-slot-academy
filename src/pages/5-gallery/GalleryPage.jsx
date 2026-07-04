@@ -2,6 +2,7 @@ import { useState, useMemo } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { Camera, Image as ImageIcon, Film, SlidersHorizontal } from "lucide-react"
 import SectionHeader from "../../components/ui/SectionHeader"
+import ImageModal from "../../components/ui/ImageModal"
 
 const GALLERY_ITEMS = [
   {
@@ -66,6 +67,7 @@ const categories = ["All", "Headshots", "Productions", "Behind the Scenes"]
 
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState("All")
+  const [modalImage, setModalImage] = useState(null)
 
   const filtered = useMemo(() => {
     if (activeCategory === "All") return GALLERY_ITEMS
@@ -118,6 +120,7 @@ export default function GalleryPage() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4 }}
                 className="card-ticket group overflow-hidden bg-asa-surface border border-asa-border rounded-xl cursor-zoom-in"
+                onClick={() => setModalImage(item.image)}
               >
                 <div className="aspect-[4/5] overflow-hidden bg-asa-background relative">
                   <img
@@ -138,6 +141,14 @@ export default function GalleryPage() {
           </AnimatePresence>
         </motion.div>
       </div>
+
+      {modalImage && (
+        <ImageModal
+          src={modalImage}
+          alt="Gallery image"
+          onClose={() => setModalImage(null)}
+        />
+      )}
     </div>
   )
 }
